@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<string>中国</string>
+		<string>+86</string>
+	</array>
+	<array>
+		<string>香港地區</string>
+		<string>+852</string>
+	</array>
+	<array>
+		<string>澳門地區</string>
+		<string>+853</string>
+	</array>
+	<array>
+		<string>台灣地區</string>
+		<string>+886</string>
+	</array>
+	<array>
+		<string>Republik Österreich</string>
+		<string>+43</string>
+	</array>
+	<array>
+		<string>België</string>
+		<string>+32</string>
+	</array>
+	<array>
+		<string>Народна република България</string>
+		<string>+359</string>
+	</array>
+	<array>
+		<string>Κύπρος</string>
+		<string>+357</string>
+	</array>
+	<array>
+		<string>Hrvatska</string>
+		<string>+385</string>
+	</array>
+	<array>
+		<string>Česká republika</string>
+		<string>+420</string>
+	</array>
+	<array>
+		<string>Kongeriget Danmark</string>
+		<string>+45</string>
+	</array>
+	<array>
+		<string>Eesti Vabariik</string>
+		<string>+372</string>
+	</array>
+	<array>
+		<string>Suomen tasavalta</string>
+		<string>+358</string>
+	</array>
+	<array>
+		<string>République française</string>
+		<string>+33</string>
+	</array>
+	<array>
+		<string>Bundesrepublik Deutschland</string>
+		<string>+49</string>
+	</array>
+	<array>
+		<string>Ελληνική Δημοκρατία</string>
+		<string>+30</string>
+	</array>
+	<array>
+		<string>Magyarország</string>
+		<string>+36</string>
+	</array>
+	<array>
+		<string>Poblacht na hÉireann</string>
+		<string>+353</string>
+	</array>
+	<array>
+		<string>Repubblica Italiana</string>
+		<string>+39</string>
+	</array>
+	<array>
+		<string>Latvijas Republika</string>
+		<string>+371</string>
+	</array>
+	<array>
+		<string>Lietuvos Respublika</string>
+		<string>+370</string>
+	</array>
+	<array>
+		<string>Groussherzogtum Lëtzebuerg</string>
+		<string>+352</string>
+	</array>
+	<array>
+		<string>Repubblika ta&apos; Malta</string>
+		<string>+356</string>
+	</array>
+	<array>
+		<string>Koninkrijk der Nederlanden</string>
+		<string>+31</string>
+	</array>
+	<array>
+		<string>Rzeczpospolita Polska</string>
+		<string>+48</string>
+	</array>
+	<array>
+		<string>República Portuguesa</string>
+		<string>+351</string>
+	</array>
+	<array>
+		<string>Lomânia</string>
+		<string>+40</string>
+	</array>
+	<array>
+		<string>Slovenská republika</string>
+		<string>+421</string>
+	</array>
+	<array>
+		<string>Republika Slovenija</string>
+		<string>+386</string>
+	</array>
+	<array>
+		<string>Reino de España</string>
+		<string>+34</string>
+	</array>
+	<array>
+		<string>Konungariket Sverige</string>
+		<string>+46</string>
+	</array>
+	<array>
+		<string>United Kingdom</string>
+		<string>+44</string>
+	</array>
+	<array>
+		<string>United States of America</string>
+		<string>+1</string>
+	</array>
+	<array>
+		<string>भारत गणराज्य</string>
+		<string>+91</string>
+	</array>
+	<array>
+		<string>Federation of Malaysia</string>
+		<string>+60</string>
+	</array>
+	<array>
+		<string>ราชอาณาจักรไทย</string>
+		<string>+66</string>
+	</array>
+	<array>
+		<string>Republic of Singapore</string>
+		<string>+65</string>
+	</array>
+	<array>
+		<string>Republika ng Pilipinas</string>
+		<string>+63</string>
+	</array>
+	<array>
+		<string>Vietnam</string>
+		<string>+84</string>
+	</array>
+	<array>
+		<string>The Republic of the Union of Myanmar</string>
+		<string>+95</string>
+	</array>
+	<array>
+		<string>Republik Indonesia</string>
+		<string>+62</string>
+	</array>
+	<array>
+		<string>대한민국</string>
+		<string>+82</string>
+	</array>
+	<array>
+		<string>República Federativa do Brasil</string>
+		<string>+55</string>
+	</array>
+	<array>
+		<string>にっぽんこく</string>
+		<string>+81</string>
+	</array>
+</array>
+</plist>

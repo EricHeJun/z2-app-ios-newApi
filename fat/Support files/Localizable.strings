@@ -1,0 +1,464 @@
+/* 
+  Localizable.strings
+  fat
+
+  Created by 何军 on 2021/4/14.
+  Copyright © 2021 Marvoto. All rights reserved.
+*/
+
+/* 
+  Localizable.strings
+  JiaYueShouYin
+
+  Created by 何军 on 2020/7/2.
+  Copyright © 2020 Eric. All rights reserved.
+*/
+//公共
+"lab_common_ok" = "好的";
+"lab_common_done" = "完成";
+"lab_common_confirm" = "确认";
+"lab_common_cancel" = "取消";
+"lab_common_success" = "成功";
+"lab_common_fail" = "失败";
+"lab_common_loading" = "请稍后";
+
+//刷新
+"lab_common_refrssh" = "松开刷新";
+
+//提示
+"tips_fail" = "网络异常,请检查网络设置";
+"tips_login_psw_1" = "密码不能为空";
+"tips_login_psw_2" = "密码不一致,请重新输入";
+"tips_login_psw_3" = "新密码和旧密码一样,修改无效";
+"lab_register_shopInfo_all" = "请输入完整信息";
+"tips_data_fail" = "数据格式错误";
+"tips_NoAuth" = "无权限";
+"tips_NoData" = "没有更多数据";
+"tips_network_NotAble" = "网络异常，请检查网络";
+"tips_network_able" = "网络良好,开始收单吧";
+"tips_uploadimage_again" = "请重新上传图片";
+"tips_uploadimage_success" = "保存成功";
+"tips_upload_success" = "上传成功";
+"tips_delete_success" = "删除成功";
+"tips_NoTestData" = "无测量记录";
+"tips_service_change" = "切换测试环境";
+
+"tips_newVersion" = "新版本";
+"tips_newVersion_message" = "检测到有新版本，赶快更新吧！";
+"tips_data_download" = "数据异常,请刷新后再试";
+"lab_storeManage_load" = "敬请期待";
+"tips_NoAuth_again" = "授权失败，请重新授权";
+"tips_login_again" = "密码已修改,请重新登录";
+
+//账户
+"lab_login_loading" = "登录中...";
+"lab_login_success" = "登录成功";
+"lab_login_title" = "登录";
+"lab_login_reginster" = "注册";
+"lab_login_reginster_success" = "注册成功";
+"lab_login_reginster_modify" = "商户资料修改";
+
+"lab_login_phone" = "手机";
+"lab_login_email" = "邮箱";
+
+"lab_login_placehold_password" = "6-12位数字或数字+字母";
+
+"lab_login_account" = "账户";
+"lab_login_password" = "密码";
+"lab_login_vcode" = "验证码";
+"lab_login_enter_phone" = "请输入手机号";
+"lab_login_enter_email" = "请输入邮箱";
+"lab_login_enter_password" = "请输入密码";
+"lab_login_enter_vcode" = "请输入验证码";
+"lab_login_enter_old_password" = "当前登录密码";
+"lab_login_enter_new_password" = "请输入新密码";
+"lab_login_enter_new_password_retry" = "请再次输入新密码";
+"lab_login_forget_password" = "忘记密码";
+"lab_login_vcode_login" = "短信登录";
+"lab_login_password_login" = "密码登录";
+"lab_login_vcode_get" = "获取验证码";
+"lab_login_old_password" = "原密码";
+"lab_login_new_password" = "新密码";
+"lab_login_confirm_password" = "确认密码";
+"lab_login_next_step" = "下一步";
+"lab_login_vcode_countDown" = "重新发送";
+
+"lab_login_find_psw" = "立即找回";
+"lab_login_find_psw_phone" = "手机找回";
+"lab_login_find_psw_email" = "邮箱找回";
+
+
+"lab_login_serve_text1" = "已阅读并同意";
+"lab_login_serve_text2" = "《用户协议与隐私政策》";
+"lab_login_serve_text3" = "请阅读并同意使用协议";
+"lab_login_serve_text5" = "用户协议与隐私政策";
+"lab_login_serve_text6" = "公司官网";
+
+"lab_login_serve_text7" = "透视脂肪,享瘦生活";
+"lab_login_serve_text8" = "当前版本";
+
+"lab_login_now" = "已有账号,马上去登录";
+"lab_login_area_title" = "选择国家和地区";
+"lab_login_area_hot" = "常用地区";
+
+"lab_login_area_hot_china" = "中国";
+"lab_login_area_hot_HK" = "香港地区";
+"lab_login_area_hot_TW" = "台湾地区";
+"lab_login_area_hot_US" = "美国";
+"lab_login_area_hot_japan" = "日本";
+
+"lab_login_email_tips" = "验证邮件已发送,请登录邮箱完成注册验证后重新登录APP";
+"lab_login_vcode_tips" = "验证码短信已发送";
+"lab_me_complete_info" = "完善资料";
+
+// 网络请求提示
+"lab_tips_http_text1" = "账号不存在";
+"lab_tips_http_text2" = "账号或密码错误";
+"lab_tips_http_text3" = "参数不完整";
+"lab_tips_http_text4" = "手机号已注册";
+"lab_tips_http_text5" = "验证码发送失败";
+
+"lab_tips_http_text6" = "验证码发送已超最大次数，发送失败";
+"lab_tips_http_text7" = "验证码错误";
+"lab_tips_http_text8" = "注册失败";
+"lab_tips_http_text9" = "密码设置不符合规范";
+"lab_tips_http_text10" = "邮箱格式不正确";
+"lab_tips_http_text11" = "邮箱已注册，请登录邮箱完成注册验证后重新登录APP（验证邮件已发送）";
+
+"lab_tips_http_text12" = "注册成功！验证邮件已发送，请登录邮箱完成注册验证后重新登录APP";
+"lab_tips_http_text13" = "邮箱尚未验证,无法登录,请登录邮箱完成注册验证（验证邮件已发送）";
+
+
+"lab_tips_http_text14" = "修改成功";
+"lab_tips_http_text15" = "修改失败";
+
+"lab_tips_http_text16" = "当前邮箱是唯一登录账号，无法解绑，请绑定手机号后再解绑邮箱";
+"lab_tips_http_text17" = "随机密码邮件已发至邮箱,请登录邮箱查看";
+
+"lab_tips_http_text18" = "邮件发送失败";
+"lab_tips_http_text19" = "邮箱已注册";
+"lab_tips_http_text20" = "邮箱尚未验证，无法找回密码";
+"lab_tips_http_text21" = "待验证";
+
+//蓝牙
+"lab_BLE_connect_success" = "设备已连接";
+"lab_BLE_connect_fail" = "连接失败";
+"lab_BLE_disconnect" = "设备未连接";
+"lab_BLE_searching" = "正在搜索设备...";
+"lab_BLE_searching_again" = "重新搜索";
+"lab_BLE_help" = "查看帮助";
+"lab_BLE_search_connect" = "搜索到设备,请选择连接:";
+
+"lab_BLE_deviceInfo_text1" = "设备名称";
+"lab_BLE_deviceInfo_text2" = "型号";
+"lab_BLE_deviceInfo_text3" = "固件版本";
+"lab_BLE_deviceInfo_text4" = "使用设置";
+"lab_BLE_deviceInfo_text5" = "扫描深度";
+"lab_BLE_deviceInfo_text6" = "蓝牙名称";
+"lab_BLE_deviceInfo_text7" = "蓝牙软件";
+"lab_BLE_deviceInfo_text8" = "MAC地址";
+"lab_BLE_deviceInfo_text9" = "固件升级";
+
+"lab_BLE_off" = "蓝牙未打开";
+"lab_BLE_search_No_device" = "未搜索到设备,请确认设备已开机";
+"lab_BLE_connect_fail_tips" = "连接失败,请确认设备未被占用";
+"lab_BLE_connected" = "已连接";
+"lab_BLE_low_battery" = "电量不足，请充电";
+
+"lab_BLE_deviceInfo_name" = "脂肪厚度仪";
+
+"lab_BLE_deviceInfo_new" = "new";
+
+"lab_BLE_deviceInfo_upgrade_text1" = "当前固件版本";
+"lab_BLE_deviceInfo_upgrade_text2" = "最新固件版本";
+"lab_BLE_deviceInfo_upgrade_text3" = "更新日志";
+
+"lab_BLE_deviceInfo_upgrade_text4" = "开始升级";
+"lab_BLE_deviceInfo_upgrade_text5" = "*请将手机和脂肪厚度仪放在桌面上,保持正常连接";
+
+"lab_BLE_deviceInfo_upgrade_text6" = "校验中...";
+"lab_BLE_deviceInfo_upgrade_text7" = "升级过程中,请勿断开设备连接";
+"lab_BLE_deviceInfo_upgrade_text8" = "升级中...";
+
+"lab_BLE_deviceInfo_upgrade_text9" = "升级成功!";
+"lab_BLE_deviceInfo_upgrade_text10" = "当前版本已是最新版本";
+"lab_BLE_deviceInfo_upgrade_text11" = "检测到新固件版本";
+
+"lab_BLE_deviceInfo_upgrade_text12" = "升级失败!";
+
+"lab_BLE_deviceInfo_upgrade_text13" = "设备固件已升级到最新，可以正常使用";
+"lab_BLE_deviceInfo_upgrade_text13_1" = "蓝牙软件已升级到最新，可以正常使用";
+"lab_BLE_deviceInfo_upgrade_text14" = "设备已经断开,请连接设备";
+
+"lab_BLE_deviceInfo_upgrade_text15" = "升级失败,请重新升级";
+
+
+"lab_BLE_deviceInfo_upgrade_text16" = "蓝牙软件升级";
+"lab_BLE_deviceInfo_upgrade_text17" = "检测到新蓝牙软件版本";
+"lab_BLE_deviceInfo_upgrade_text18" = "当前蓝牙软件版本";
+"lab_BLE_deviceInfo_upgrade_text19" = "最新蓝牙软件版本";
+
+
+"lab_BLE_deviceInfo_upgrading" = "升级过程中,不能中断";
+"lab_BLE_setting_success" = "设置成功";
+
+
+
+
+//首页
+"lab_main_test_service" = "测试环境";
+"lab_main_test_account_self" = "(自己)";
+"lab_tabBar_main" = "测量";
+"lab_main_test_account" = "测量者";
+"lab_main_test_point" = "测量部位";
+"lab_main_test_sex" = "请选择性别";
+"lab_main_test_function" = "请选择功能";
+"lab_main_test_fat" = "脂肪测量";
+"lab_main_test_muscle" = "肌肉探索";
+"lab_main_test_select_point" = "请选择测量部位";
+"lab_main_fat" = "脂肪";
+"lab_main_muscle" = "肌肉";
+"lab_main_test_belly" = "腹部";
+"lab_main_test_waist" = "腰部";
+"lab_main_test_arm" = "上臂";
+"lab_main_test_arm_front" = "上臂-前";
+"lab_main_test_ham" = "大腿";
+"lab_main_test_calf" = "小腿";
+
+"lab_function_testing" = "测量中...";
+"lab_function_testing_no" = "测量无效";
+
+
+"lab_function_test_max" = "最大";
+"lab_function_test_min" = "最小";
+"lab_function_test_avg" = "平均";
+
+
+
+"lab_function_chat_title" = "皮下组织声像图";
+"lab_function_chat_assessment" = "脂肪厚度评估";
+"lab_function_chat_assessment_value" = "厚度为";
+"lab_function_result_1" = "骨感型";
+"lab_function_result_2" = "紧致型";
+"lab_function_result_3" = "肉感型";
+"lab_function_result_4" = "丰满型";
+"lab_function_result_5" = "赘肉型";
+"lab_function_result_6" = "肥胖型";
+
+"lab_function_result_1_analysis" = "脂肪很少，体型可见瘦弱，建议适当增加些脂肪保持健康哦；";
+"lab_function_result_2_analysis" = "Nice！脂肪刚刚好，即能保持健康又使体型健美；";
+"lab_function_result_3_analysis" = "脂肪在正常范围内，体型上可感觉皮下软软的、肉肉的；";
+"lab_function_result_4_analysis" = "比正常要稍微厚点，体型上可见赘肉；";
+"lab_function_result_5_analysis" = "脂肪有点多了，体型上有点臃肿了，为健康着想最好能减去一些脂肪；";
+"lab_function_result_6_analysis" = "脂肪很多了，体型肥胖，为健康着想需要减脂了；";
+
+"lab_function_test_again" = "按下操作键重新测量";
+"lab_function_analysis" = "*以上分析仅供参考";
+
+"lab_main_deviceDetail_text1" = "设备开机后等待APP自动搜索设备";
+"lab_main_deviceDetail_text2" = "- 把耦合剂均匀涂抹在蓝色区域\n- 按住按键在蓝色区域轻轻滑动";
+"lab_main_deviceDetail_text3" = "请连接设备";
+"lab_main_deviceDetail_text4" = "请按下按键开始测量";
+
+"lab_main_add_account" = " 添加成员";
+"lab_main_add_account_title" = "添加新成员";
+"lab_main_switch_account" = "切换测量对象";
+"lab_main_visitor_test" = "访客测量";
+
+
+
+
+//数据
+"lab_tabBar_chat" = "曲线";
+
+"lab_chat_recently_chat" = "最近测量";
+"lab_chat_history_chat" = "历史记录";
+
+"lab_chat_history_chat_text1" = "时间";
+"lab_chat_history_chat_text2" = "类别";
+"lab_chat_history_chat_text3" = "厚度";
+"lab_chat_history_chat_text4" = "操作";
+
+"lab_chat_history_chat_week" = "周";
+"lab_chat_history_chat_month" = "月";
+"lab_chat_history_chat_year" = "年";
+
+
+"lab_chat_history_chat_more_1"= "显示所有记录";
+"lab_chat_history_chat_more_2"= "显示脂肪记录";
+"lab_chat_history_chat_more_3"= "显示肌肉记录";
+
+"lab_chat_share_success" = "分享成功";
+"lab_chat_delete" = "删除";
+"lab_chat_delete_tips" = "是否删除记录";
+
+
+//设备
+"lab_device_info_title" = "设备信息";
+
+
+
+
+
+
+//我的
+"lab_tabBar_me" = "我的";
+
+"lab_me_userInfo_name" = "昵称";
+"lab_me_userInfo_name_edit" = "修改昵称";
+"lab_me_userInfo_name_enter" = "请输入昵称";
+"lab_me_userInfo_sex" = "性别";
+
+"lab_me_userInfo_sex_man" = "男";
+"lab_me_userInfo_sex_woman" = "女";
+
+"lab_me_userInfo_birthday" = "生日";
+"lab_me_userInfo_height" = "身高";
+"lab_me_userInfo_weight" = "体重";
+
+"lab_me_userInfo_save" = "保存";
+"lab_me_userInfo_delete" = "删除成员";
+"lab_me_userInfo_delete_tips" = "删除成员会同时删除该成员的所以测量数据,是否确定删除?";
+
+"lab_me_userInfo_text_20" = "20个以内字符,仅可以使用汉字、字母、数字、下划线";
+"lab_me_userInfo_no_setting" = "未设置";
+"lab_me_userInfo_no_bind" = "未绑定";
+
+
+"lab_me_userInfo_bind_email" = "绑定邮箱";
+"lab_me_userInfo_bind_phone" = "绑定手机号";
+
+"lab_me_userInfo_bind_email_text1" = "绑定后可使用邮箱登录和找回密码";
+"lab_me_userInfo_bind_email_text2" = "绑定后可使用手机号登录和找回密码";
+"lab_me_userInfo_bind_email_text3" = "您目前已绑定的手机号";
+"lab_me_userInfo_bind_email_text4" = "您目前已绑定的邮箱";
+"lab_me_userInfo_bind_email_text5" = "解除绑定";
+"lab_me_userInfo_bind_email_text5_title" = "解除当前账号?";
+"lab_me_userInfo_bind_email_text6" = "更换手机号";
+
+"lab_me_account_manage" = "成员管理";
+"lab_me_use" = "使用指南";
+"lab_me_question" = "常见问题";
+"lab_me_feedback" = "意见反馈";
+"lab_me_setting" = "设置";
+
+"lab_me_userInfo_title" = "个人信息";
+
+"lab_me_userInfo_name" = "昵称";
+"lab_me_userInfo_phone" = "手机号";
+"lab_me_userInfo_edit_psw" = "修改密码";
+"lab_me_userInfo_logout" = "退出登录";
+"lab_me_userInfo_logout_title" = "是否退出登录?";
+"lab_me_userInfo_server" = "职务";
+"lab_me_userInfo_edit" = "修改";
+"lab_me_userInfo_edit_icon" = "修改头像";
+
+
+"lab_me_setUser_Profile" = "设置个人头像";
+"lab_me_setUser_Profile_more" = "更多";
+"lab_me_setUser_Profile_select" = "从相册选择照片";
+"lab_me_setUser_Profile_all" = "头像图库";
+"lab_me_setUser_Profile_use" = "立即使用";
+
+"lab_me_setUser_Profile_select_1" = "从相册选取";
+"lab_me_setUser_Profile_select_2" = "拍照";
+"lab_requires_access_camera" = "需要开启相机权限";
+"lab_open_camera_authorization_method" = "开启方法：\n进入“设置-隐私-相机“，选择“%@“开启相机权限。";
+
+"lab_feedback_enter_suggestions" = "您的反馈和建议对我们非常重要,请详细填写";
+"lab_feedback_confirm_success" = "提交成功";
+
+
+"lab_feedback_classification" = "问题类型";
+"lab_feedback_contact" = "联系方式(选填,便于我们与您联系)";
+"enter_account_placeholder" = "请留下您的手机号/邮箱";
+"lab_feedback_submit" = "提交";
+"lab_feedback_add_picture" = "添加照片";
+
+"lab_feedback_suggest_1" = "功能/内容建议";
+"lab_feedback_suggest_2" = "程序bug";
+"lab_feedback_suggest_3" = "投诉";
+"lab_feedback_suggest_4" = "其他";
+
+
+"lab_me_userInfo_text1" = "个人中心";
+"lab_me_userInfo_text2" = "账号管理";
+"lab_me_userInfo_text3" = "单位设置";
+"lab_me_userInfo_text4" = "检测更新";
+"lab_me_userInfo_text5" = "关于我们";
+
+
+"lab_me_userInfo_text6" = "当前版本是最新版本";
+"lab_me_userInfo_text7" = "清除";
+
+"lab_me_userInfo_text8" = "待验证...";
+"lab_me_userInfo_text9" = "重新发送验证邮件";
+"lab_me_userInfo_text10" = "已验证,状态未刷新?";
+
+
+//fex
+"lab_share_platformName_1" = "微信好友";
+"lab_share_platformName_2" = "朋友圈";
+"lab_share_platformName_3" = "QQ好友";
+"lab_share_platformName_4" = "微博";
+"lab_share_platformName_5" = "Facebook";
+"lab_share_platformName_6" = "Twitter";
+"lab_share_platformName_7" = "WhatsApp";
+"lab_share_platformName_8" = "Instagram";
+
+//日期
+"lab_date_week_1" = "周日";
+"lab_date_week_2" = "周一";
+"lab_date_week_3" = "周二";
+"lab_date_week_4" = "周三";
+"lab_date_week_5" = "周四";
+"lab_date_week_6" = "周五";
+"lab_date_week_7" = "周六";
+
+//guide
+"lab_guide_last" = "好了,下一步";
+"lab_guide_back" = "上一步";
+"lab_guide_quit" = "退出引导";
+
+"lab_guide_text_1" = "寻找腹部腹直肌";
+"lab_guide_text_2" = "第一步 确定肌肉位置";
+"lab_guide_text_3" = "在肚脐上方2cm至胸骨下区域寻找腹直肌";
+"lab_guide_text_4" = "第二步 认识腹直肌形态";
+"lab_guide_text_5" = "腹直肌由左右腹直肌构成,在声像图上看到像一个“蝴蝶结”形状";
+"lab_guide_text_6" = "第三步 涂抹耦合剂";
+"lab_guide_text_7" = "确定一处测量位置,沿腹直肌水平方向均匀涂抹耦合剂";
+"lab_guide_text_8" = "第四步 将设备置于左侧腹直肌上,水平向右侧滑动";
+"lab_guide_text_9" = "多尝试几次,试试滑快,滑慢,或向上,向下微调位置,看看不同位置的腹直肌";
+
+"lab_guide_text_10" = "寻找上臂肱二头肌";
+"lab_guide_text_11" = "肱二头肌位于上臂前方(最凸起的那块肌肉)";
+"lab_guide_text_12" = "第二步 认识肱二头肌形态";
+"lab_guide_text_13" = "肱二头肌(包含肱肌)附着在肱骨上,测量时以打出粗亮的骨头边界为佳.";
+"lab_guide_text_14" = "在肱二头肌区域沿着骨头方向均匀涂抹耦合剂.";
+"lab_guide_text_15" = "第四步 将设备置于上方起点位置,垂直向肘窝方向滑动";
+"lab_guide_text_16" = "多尝试几次,试试微调位置看看肌肉形态的差异.";
+
+"lab_guide_text_17" = "寻找大腿股直肌";
+"lab_guide_text_18" = "股直肌位于大腿正面.股直肌下方是股中间肌,外侧是股外侧肌,内侧是股内侧肌.";
+"lab_guide_text_19" = "第二步 认识股直肌形态";
+"lab_guide_text_20" = "股直肌是最外侧的肌肉,股直肌下方依次是股中间肌、股骨.";
+"lab_guide_text_21" = "沿股直肌中间区域(髂脊上缘与膝盖上缘连线的大腿中点)涂抹耦合剂.";
+"lab_guide_text_22" = "第四步 将设备置于上方起点位置,向下滑动";
+"lab_guide_text_23" = "多尝试几次,试试向左向右微调位置看看肌肉形态的差异.";
+
+"lab_guide_text_24" = "寻找小腿腓肠肌";
+"lab_guide_text_25" = "腓肠肌位于小腿后,由内侧腓肠肌和外侧腓肠肌组成,我们探测的是内侧腓肠肌.";
+"lab_guide_text_26" = "第二步 认识腓肠肌形态";
+"lab_guide_text_27" = "以打出清晰的腓肠肌上下边界为佳.";
+"lab_guide_text_28" = "从膝盖窝下方2cm开始沿内侧腓肠肌涂抹耦合剂.";
+
+"lab_guide_text_29" = "腹直肌探索中...";
+"lab_guide_text_30" = "肱二头肌探索中...";
+"lab_guide_text_31" = "股直肌探索中...";
+"lab_guide_text_32" = "腓肠肌探索中...";
+
+"lab_guide_text_33" = "正在保存...";
+
+//绑定邮箱
+"lab_tip_bind" = "确定清除当前绑定的邮箱?";
+"lab_tip_bind_text_1" = "邮件已发送，请登录邮箱进行验证";

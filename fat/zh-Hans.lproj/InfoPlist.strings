@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  fat
+
+  Created by ydd on 2021/5/24.
+  Copyright © 2021 Marvoto. All rights reserved.
+*/
+CFBundleDisplayName = "脂肪厚度仪";

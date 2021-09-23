@@ -1,0 +1,144 @@
+//
+//  PrefixHeader.pch
+//  fat
+//
+//  Created by 何军 on 2021/4/7.
+//  Copyright © 2021 Marvoto. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#pragma mark ============== 显示 ===============
+
+#define KKSceneWidth   [UIScreen mainScreen].bounds.size.width
+#define KKSceneHeight  [UIScreen mainScreen].bounds.size.height
+#define KKStatusBarHeight [UIApplication sharedApplication].statusBarFrame.size.height
+#define KKNavBarHeight (44+KKStatusBarHeight)
+#define KKIsIphoneXLater  ({\
+BOOL isiPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+UIWindow *window = [UIApplication sharedApplication].delegate.window;\
+if (window.safeAreaInsets.bottom > 0.0) {\
+isiPhoneX = YES;\
+}\
+}\
+isiPhoneX;\
+})
+
+/** 判断是否为iPad*/
+#define kISiPad     (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+ 
+#define KKButtomSpace  (KKIsIphoneXLater ? 39 : 0)
+#define KKLayerCornerRadius  7
+#define KKButtonHeight kk_y(90)
+#define KKShowInfoViewHeight kk_y(340)
+
+#define KKToastTime      1.5
+#define KKTimeOut        10
+#define KKQuertOrderTime 2
+
+
+//每一条线的宽度 (精准一个像素点)
+#define KKLineWidth (1 / [UIScreen mainScreen].scale)
+//偏移量
+#define KKLineWidth_adjust_offset (1-KKLineWidth)
+
+
+#pragma mark ============== 颜色类（背景、字体） ===============
+
+#define UIColorFromRGB(rgbValue) ([UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0])
+
+#define KKBgBlueColor     UIColorFromRGB(0x1E90FF)
+#define kkBgRedColor      UIColorFromRGB(0xEB4D3D)
+#define kkBgAlarmColor    UIColorFromRGB(0xFFC53D)
+#define kkBgGrayColor     UIColorFromRGB(0xF5F5F5)
+#define kkBgLightGrayColor UIColorFromRGB(0xDCDCDC)
+#define kkTextBlackColor  UIColorFromRGB(0x333333)
+#define kkTextGrayColor   UIColorFromRGB(0xB8B8B8)
+#define kkWhiteColor      UIColorFromRGB(0xFFFFFF)
+
+#define kkButtonLineGrayColor   UIColorFromRGB(0xD9D9D9)
+
+/*
+ 主色调
+ */
+#define KKBgYellowColor     UIColorFromRGB(0xFDB70E)
+
+
+/*
+ 测量结果 颜色
+ */
+#define KKChartColor1    UIColorFromRGB(0x4BA9F1)
+#define KKChartColor2    UIColorFromRGB(0x51B558)
+#define KKChartColor3    UIColorFromRGB(0xBAD744)
+#define KKChartColor4    UIColorFromRGB(0xF59A23)
+#define KKChartColor5    UIColorFromRGB(0xE6530B)
+#define KKChartColor6    UIColorFromRGB(0xEA0707)
+
+/*
+ 身体部位颜色
+ */
+#define KKWaistColor     UIColorFromRGB(0xfdb70e)
+#define KKFaceColor      UIColorFromRGB(0xff3a89)
+#define KKBellyColor     UIColorFromRGB(0xff3a89)
+#define KKArmColor       UIColorFromRGB(0x424ddd)
+#define KKHamColor       UIColorFromRGB(0x7164b4)
+#define KKCalfColor      UIColorFromRGB(0x40c9d3)
+
+
+#define KKLineColor     [UIColor colorWithRed:249/255. green:242/255. blue:47/255. alpha:1]
+
+
+#pragma mark ============== 字体（多语言、大小） ===============
+
+#define KKFont_Big_num         45
+#define KKFont_Big_20          20
+#define KKFont_Big             17
+#define KKFont_Normal          15
+#define KKFont_small_large     13
+#define KKFont_small_12        12
+#define KKFont_small_11        11
+#define KKFont_small_middle    10
+#define KKFont_small_middle_9  9
+
+
+#define KKLanguage(key) NSLocalizedString(key, "")
+
+//字体尺寸最大x限制
+#define kkMaxValue  (KKSceneWidth > 375.0 ? 1 : KKSceneWidth/375.0)
+
+#define kk_sizefont(value) [UIFont systemFontOfSize:value * kkMaxValue]  //系统自带不加粗字体
+#define kk_sizeBoldfont(value) [UIFont boldSystemFontOfSize:value * kkMaxValue] //系统自带加粗字体
+//可以自定义字体 和 大小
+#define kk_customFontNamefont(fontName,value) [UIFont fontWithName:fontName size:value * kkMaxValue]
+//设计模版基于 iphone6 px 来设计
+#define kkHeight_width_Rate  (KKSceneHeight/KKSceneWidth > 2 ? 0.8:1)  //如果屏幕很长的屏幕，则缩小相应的比例，防止界面太长
+#define kk_x(x)  (floor(KKSceneWidth*x/750.) > 0 ? floor(KKSceneWidth*x/750.):1)
+
+#define kk_y(y)  (floor(kkHeight_width_Rate*KKSceneHeight*y/1334.) > 0 ? floor(kkHeight_width_Rate*KKSceneHeight*y/1334.) : 1)
+
+#define kkLineHeight [UIScreen mainScreen].scale
+#pragma mark ============== 配置 ===============
+
+#define SW(weakSelf) __weak __typeof(&*self)weakSelf = self;
+
+#ifdef DEBUG
+#define DLog( s, ... ) NSLog( @"<%@:(%d)> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+//#define DLog( s, ... )
+#else
+#define DLog( s, ... )
+#endif
+
+
+//bitmap 图片大小
+#define  pxWidth  150
+#define  pxHeight 477  //256 或者 477 
+#define  pxHead   11
+#define  OCXO     40
+
+#pragma mark ============== 导入文件 ===============
+#import "HJCommon.h"
+#import "KKHttpRequest.h"
+
+#endif /* PrefixHeader_pch */

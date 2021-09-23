@@ -1,0 +1,6 @@
+framework module fat_BLE_SDK {
+  umbrella header "fat_BLE_SDK.h"
+
+  export *
+  module * { export * }
+}
