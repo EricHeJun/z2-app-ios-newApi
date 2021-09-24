@@ -12,11 +12,11 @@
 /** URL、主地址 **/
 
 /// 外网正式
-NSString *const HOST_URl = @"http://api.marvoto.com/MarvotoCloudService/mobile/service";
+NSString *const HOST_URl = @"http://admin.marvoto.com:80";
 NSString *const STS_URl  = @"http://api.marvoto.com/MarvotoCloudService/mobile/sts_server";
 
 
-/// 内网测试
+/// 内网测试 - DEBUG
 NSString *const HOST_URl_TEST = @"http://192.168.10.198/MarvotoCloudService/mobile/service";
 NSString *const STS_URl_TEST = @"http://192.168.10.198/MarvotoCloudService/mobile/sts_server";
 
@@ -26,9 +26,17 @@ NSString *const accessSecret = @"2ojUCHz5xkA4TPmmdB8As49WJsZoga6M";
 
 NSString *const SECRET_KEY = @"Mt2JtH7rP4h-2018";
 
+/*
+ 新API
+ */
+NSString *const KK_URL_api_user_login = @"/api/user/login";  //登陆
+NSString *const KK_URL_api_user_info = @"/api/user/info";    //获取用户信息
 
 
-NSString *const  KK_URL_user_login_v2 = @"user_login_v2";
+/*
+ 旧API
+ */
+NSString *const KK_URL_user_login_v2 = @"user_login_v2";
 NSString *const KK_URL_user_register = @"user_register";                     //注册
 NSString *const KK_URL_user_register_v2 = @"user_register_v2";               //注册v2
 NSString *const KK_URL_find_password_by_phone= @"find_password_by_phone";    //手机找回密码

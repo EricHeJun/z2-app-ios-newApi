@@ -100,12 +100,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 #pragma mark ============== 获取用户信息 ===============
 - (void)getUserInfo{
 
-    HJUserInfoModel * model = [HJUserInfoModel new];
-    model.userId = [[NSUserDefaults standardUserDefaults] objectForKey:KKAccount_userId];
-    
-    NSDictionary *dic = [model toDictionary];
-    
-    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_get_user withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:nil withUrl:KK_URL_api_user_info withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
         if (model.errorcode == KKStatus_success) {
 

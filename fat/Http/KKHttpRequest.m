@@ -19,7 +19,7 @@
     
     NSMutableURLRequest * request;
     
-    NSString * access_token = [[NSUserDefaults standardUserDefaults] objectForKey:KKAccount_Token];
+    NSString * Authorization = [[NSUserDefaults standardUserDefaults] objectForKey:KKAccount_Token];
     
     NSString * timestamp = [[HJCommon shareInstance] getTimestamp];
     
@@ -34,25 +34,13 @@
     
     NSMutableDictionary * requestdic =  [NSMutableDictionary dictionary];
     
-    
-
-    
-    [requestdic setObject:url forKey:@"commandCode"];
-    [requestdic setObject:AES forKey:@"data"];
-    
-    [requestdic setObject:timestamp forKey:@"timeStamp"];
-    [requestdic setObject:token forKey:@"token"];
-    
-    NSString * country = [[[[HJCommon shareInstance] getCurrectLocalCountry] componentsSeparatedByString:@"_"] lastObject];
-    [requestdic setObject:country forKey:@"langType"];
-    
     NSString * Language = [[[[HJCommon shareInstance] getCurrectLocalLanguage] componentsSeparatedByString:@"-"] firstObject];
-    [requestdic setObject:Language forKey:@"language"];
-    
-    [requestdic setObject:[[HJCommon shareInstance] getAppBundleID] forKey:@"application_ID"];
-    [requestdic setObject:@"1.0" forKey:@"server_version"];
-    
-    [requestdic setObject:access_token==nil?@"":access_token forKey:@"access_token"];
+    [requestdic setObject:Language forKey:@"Language"];
+    [requestdic setObject:[[HJCommon shareInstance] getAppBundleID] forKey:@"App-Id"];
+    [requestdic setObject:@"1.0" forKey:@"Version"];
+    [requestdic setObject:timestamp forKey:@"Ts"];
+    [requestdic setObject:@"1" forKey:@"Sign"];
+    [requestdic setObject:Authorization==nil?@"":Authorization forKey:@"Authorization"];
     
 
     

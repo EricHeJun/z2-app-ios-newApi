@@ -27,6 +27,13 @@ extern NSString *const SECRET_KEY;
 
 
 //请求 url
+/*
+ 新API
+ */
+extern NSString *const KK_URL_api_user_login;  //登陆
+extern NSString *const KK_URL_api_user_info;    //获取用户信息
+
+
 extern NSString *const KK_URL_user_login_v2;              //登陆
 extern NSString *const KK_URL_user_register;
 extern NSString *const KK_URL_user_register_v2;           //注册
