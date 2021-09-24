@@ -195,7 +195,7 @@ typedef NS_ENUM(NSInteger,KKTest_Sex){
 //请求结果
 typedef NS_ENUM(NSInteger,KKStatus){
     
-    KKStatus_success = 0,
+    KKStatus_success = 200,
     KKStatus_fail,
     KKStatus_Token_invalid = 401,   //token 无效
     

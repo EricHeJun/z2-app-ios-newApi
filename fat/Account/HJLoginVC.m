@@ -200,17 +200,15 @@
         NSString * password = self.phoneLoginView.loginPswTf.text;
         
         HJLoginModel * model = [[HJLoginModel alloc] init];
-        model.userName = mobile;
-        model.passWord = [[HJCommon shareInstance] md5To32bit:password];
-        model.loginType = @"1";
-        model.countryAreaCode = self.phoneLoginView.phoneLoginAreaBtn.titleLabel.text;
-        
-        
+        model.loginName = [NSString stringWithFormat:@"%@%@",self.phoneLoginView.phoneLoginAreaBtn.titleLabel.text,mobile];
+        model.passWord = password;
+
+
         NSDictionary * dic = [model toDictionary];
         
         [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_login_loading")];
         
-        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_user_login_v2 withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
+        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_login withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
             
             NSString * message = [HJTipsUtil resultTips:model type:sender.tag];
             
@@ -264,15 +262,15 @@
         
 
         HJLoginModel * model = [[HJLoginModel alloc] init];
-        model.userName = mobile;
-        model.passWord = [[HJCommon shareInstance] md5To32bit:password];
-        model.loginType = @"2";
+        model.loginName = mobile;
+        model.passWord =password;
+    
        
         NSDictionary * dic = [model toDictionary];
     
         [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_login_loading")];
         
-        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_user_login_v2 withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
+        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_login withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
             
             NSString * message = [HJTipsUtil resultTips:model type:sender.tag];
             

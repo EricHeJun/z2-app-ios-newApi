@@ -25,15 +25,13 @@
     
     NSString * requesrUrl = [[HJCommon shareInstance] isDebug]?HOST_URl_TEST:HOST_URl;
     
-    NSString * jsonStr = [[HJCommon shareInstance] dictionaryToJson:dataString];
+    requesrUrl = [NSString stringWithFormat:@"%@%@",requesrUrl,url];
     
-    NSString * AES = [HJAESUtil aesEncrypt:jsonStr];
-    
-    NSString * token = [[HJCommon shareInstance] md5To32bit:[NSString stringWithFormat:@"%@%@%@%@",timestamp,url,AES,SECRET_KEY]];
     
     
     NSMutableDictionary * requestdic =  [NSMutableDictionary dictionary];
     
+
     NSString * Language = [[[[HJCommon shareInstance] getCurrectLocalLanguage] componentsSeparatedByString:@"-"] firstObject];
     [requestdic setObject:Language forKey:@"Language"];
     [requestdic setObject:[[HJCommon shareInstance] getAppBundleID] forKey:@"App-Id"];
@@ -55,6 +53,11 @@
                 //请求头类型
                 [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
                 [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+                
+                
+                NSData * bodyData = [NSJSONSerialization dataWithJSONObject:dataString options:NSJSONWritingPrettyPrinted error:nil];
+                
+                [request setHTTPBody:bodyData];
                 
                 
             }else{ //表单 形式作为请求体

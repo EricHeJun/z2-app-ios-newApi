@@ -31,10 +31,8 @@
  */
 @interface HJLoginModel : HJBaseObject
 
-@property (copy,nonatomic)NSString * userName;
+@property (copy,nonatomic)NSString * loginName;
 @property (copy,nonatomic)NSString * passWord;
-@property (copy,nonatomic)NSString * loginType;
-@property (copy,nonatomic)NSString * countryAreaCode;
 
 @end
 
