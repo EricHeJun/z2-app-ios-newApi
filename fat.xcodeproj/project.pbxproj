@@ -129,7 +129,6 @@
 		791029722626C26500DBAAE2 /* HJLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 791029702626C26500DBAAE2 /* HJLoginView.m */; };
 		7910299326281FBF00DBAAE2 /* HJBLEImageDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910299226281FBF00DBAAE2 /* HJBLEImageDataVC.m */; };
 		7910299426281FBF00DBAAE2 /* HJBLEImageDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910299226281FBF00DBAAE2 /* HJBLEImageDataVC.m */; };
-		793E7E6E265CF8B3001BA47B /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 793E7E6D265CF8B3001BA47B /* opencv2.framework */; };
 		7989BB522664AD73002B7DAE /* fat_BLE_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 746AC36E2616FD5200FB3841 /* fat_BLE_SDK.framework */; };
 		799B36EF26A527DD00712D74 /* HJBLECommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 799B36EE26A527DD00712D74 /* HJBLECommon.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		79BCAE3A26A69BE500BC940D /* HJChartXAxisDayFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BCAE3926A69BE500BC940D /* HJChartXAxisDayFormatter.m */; };
@@ -139,6 +138,7 @@
 		79CA5F63262930990044870D /* HJBLEChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CA5F61262930990044870D /* HJBLEChatView.m */; };
 		79CE4CEE26A1636E00A0DA72 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79CE4CED26A1636E00A0DA72 /* MobileCoreServices.framework */; };
 		79E6AD4A26609AAA00AF6D0C /* HJChartAnalysisModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E6AD4926609AAA00AF6D0C /* HJChartAnalysisModel.m */; };
+		79F539D526FF461E00A44807 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F539D426FF461E00A44807 /* opencv2.framework */; };
 		C7109B6B5FB632AA1B6C107F /* Pods_fat_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BC8745949CA4519B8D35A40 /* Pods_fat_Demo.framework */; };
 /* End PBXBuildFile section */
 
@@ -341,7 +341,6 @@
 		791029702626C26500DBAAE2 /* HJLoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJLoginView.m; sourceTree = "<group>"; };
 		7910299126281FBF00DBAAE2 /* HJBLEImageDataVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJBLEImageDataVC.h; sourceTree = "<group>"; };
 		7910299226281FBF00DBAAE2 /* HJBLEImageDataVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJBLEImageDataVC.m; sourceTree = "<group>"; };
-		793E7E6D265CF8B3001BA47B /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		799B36EE26A527DD00712D74 /* HJBLECommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJBLECommon.h; sourceTree = "<group>"; };
 		799B36F426A5286500712D74 /* fat_BLE_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = fat_BLE_SDK.framework; sourceTree = "<group>"; };
 		79BCAE3826A69BE500BC940D /* HJChartXAxisDayFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJChartXAxisDayFormatter.h; sourceTree = "<group>"; };
@@ -355,6 +354,7 @@
 		79CE4CED26A1636E00A0DA72 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		79E6AD4826609AAA00AF6D0C /* HJChartAnalysisModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJChartAnalysisModel.h; sourceTree = "<group>"; };
 		79E6AD4926609AAA00AF6D0C /* HJChartAnalysisModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJChartAnalysisModel.m; sourceTree = "<group>"; };
+		79F539D426FF461E00A44807 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		81263DC39B67A3EB441C7C25 /* Pods_fat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7ADE45547852AB485179752 /* Pods-fat_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fat_Demo.release.xcconfig"; path = "Target Support Files/Pods-fat_Demo/Pods-fat_Demo.release.xcconfig"; sourceTree = "<group>"; };
 		B09375DADD29DA0CB6B4B7F6 /* Pods-fat_BLE_SDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fat_BLE_SDK.debug.xcconfig"; path = "Target Support Files/Pods-fat_BLE_SDK/Pods-fat_BLE_SDK.debug.xcconfig"; sourceTree = "<group>"; };
@@ -368,11 +368,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79F539D526FF461E00A44807 /* opencv2.framework in Frameworks */,
 				79CE4CEE26A1636E00A0DA72 /* MobileCoreServices.framework in Frameworks */,
 				74D01B47262D7D8800F23115 /* CoreMedia.framework in Frameworks */,
 				7989BB522664AD73002B7DAE /* fat_BLE_SDK.framework in Frameworks */,
 				74D01B45262D7D7C00F23115 /* AVFoundation.framework in Frameworks */,
-				793E7E6E265CF8B3001BA47B /* opencv2.framework in Frameworks */,
 				0883D7CD2C3F52265B4C7ACC /* Pods_fat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -714,8 +714,8 @@
 		7910279F261BF6E500DBAAE2 /* framework */ = {
 			isa = PBXGroup;
 			children = (
+				79F539D426FF461E00A44807 /* opencv2.framework */,
 				799B36F426A5286500712D74 /* fat_BLE_SDK.framework */,
-				793E7E6D265CF8B3001BA47B /* opencv2.framework */,
 			);
 			path = framework;
 			sourceTree = "<group>";
