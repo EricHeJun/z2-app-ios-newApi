@@ -120,12 +120,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
              */
             [HJCommon shareInstance].userInfoModel = userModel;
             
-        }else {
-            
-            [[HJCommon shareInstance] logout:NO toast:model.msg];
-            
         }
-        
+            
     } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
     }];

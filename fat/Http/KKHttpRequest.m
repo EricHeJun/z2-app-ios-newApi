@@ -76,10 +76,17 @@
                 
                 if ([dic isKindOfClass:[NSDictionary class]]) {
                     
-                    successResult(data,dic,model);
-                    
                     NSLog(@"hj_success:%@",dic);
                     
+                    if (model.code == KKStatus_Token_invalid) {
+                        
+                        [[HJCommon shareInstance] logout:YES toast:model.msg];
+                        
+                    }else{
+                        
+                        successResult(data,dic,model);
+                    }
+                
                 }else{
                     
                     NSLog(@"hj_success:%@",dic);
