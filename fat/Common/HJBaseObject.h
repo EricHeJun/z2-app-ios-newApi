@@ -66,25 +66,14 @@
 /*
  手机注册模型
  */
-@interface HJRegisterPhoneModel : HJBaseObject
+@interface HJRegisterModel : HJBaseObject
 
-@property (copy,nonatomic)NSString * userName;
+@property (copy,nonatomic)NSString * loginName;
 @property (copy,nonatomic)NSString * passWord;
-@property (copy,nonatomic)NSString * codeNum;
-@property (copy,nonatomic)NSString * registerType;
+@property (copy,nonatomic)NSString * code;
 
 @end
 
-/*
- 邮箱注册模型
- */
-@interface HJRegisterEmailModel : HJBaseObject
-
-@property (copy,nonatomic)NSString * email;
-@property (copy,nonatomic)NSString * passWord;
-@property (copy,nonatomic)NSString * registerType;
-
-@end
 
 /*
  手机号找回密码模型

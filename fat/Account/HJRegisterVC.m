@@ -225,7 +225,7 @@
         
         [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_sms_code withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
             
-            if (model.errorcode == KKStatus_success) {
+            if (model.code == KKStatus_success) {
                 
                 [self showToastInView:self.view time:KKToastTime title:model.msg];
                 
@@ -258,64 +258,16 @@
         NSString * password = self.phoneLoginView.loginPswTf.text;
         
         
-        HJRegisterPhoneModel * model = [HJRegisterPhoneModel new];
-        model.userName = [NSString stringWithFormat:@"%@%@",self.phoneLoginView.phoneLoginAreaBtn.titleLabel.text,mobile];
-        model.passWord = [[HJCommon shareInstance] md5To32bit:password];
-        model.codeNum = self.phoneLoginView.vcodeTf.text;
-        model.registerType = @"1";
+        HJRegisterModel * model = [HJRegisterModel new];
+        model.loginName = [NSString stringWithFormat:@"%@%@",self.phoneLoginView.phoneLoginAreaBtn.titleLabel.text,mobile];
+        model.passWord = password;
+        model.code = self.phoneLoginView.vcodeTf.text;
         
         NSDictionary * dic = [model toDictionary];
         
-        [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
+        [self userRegister:dic type:KKButton_Account_Register];
         
-        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_user_register_v2 withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
-            
-            NSString * message = [HJTipsUtil resultTips:model type:sender.tag];
-            
-            if (model.errorcode == KKStatus_success) {
-                
-                [self showToastInWindows:KKToastTime title:message];
-                
-                //解析数据,存储数据库
-                NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
-                HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithString:jsonStr error:nil];
-                DLog(@"%@",jsonStr);
-                /*
-                 插入本地数据库
-                 */
-                BOOL result = [HJFMDBModel userInfoInsert:userModel];
-                
-                /*
-                 保存当前登陆者信息
-                 */
-                
-                [[HJCommon shareInstance] saveUserInfo:userModel];
-                
-                /*
-                 进入主界面
-                 */
-                
-                if (result) {
-                    
-                    AppDelegate *  appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                    [appDelegate loginMain];
-                    
-                }
-                
-                
-            }else{
-                
-                [self showToastInView:self.view time:KKToastTime title:message];
-            }
-            
-        } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
-            
-            [self showToastInView:self.view time:KKToastTime title:KKLanguage(@"tips_fail")];
-            
-        }] ;
-      
     
-        
     }else if (sender.tag == KKButton_Account_Register_email){
         
         if (self.emailLoginView.selectAgreementBtn.selected == NO) {
@@ -333,41 +285,14 @@
         NSString * password = self.emailLoginView.loginPswTf.text;
         
         
-        HJRegisterEmailModel * model = [HJRegisterEmailModel new];
-        model.email = mobile;
-        model.passWord = [[HJCommon shareInstance] md5To32bit:password];
-        model.registerType = @"2";
-        
+        HJRegisterModel * model = [HJRegisterModel new];
+        model.loginName = mobile;
+        model.passWord = password;
+
         NSDictionary * dic = [model toDictionary];
         
-        [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
+        [self userRegister:dic type:KKButton_Account_Register_email];
         
-        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_user_register_v2 withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
-            
-            NSString * message = [HJTipsUtil resultTips:model type:sender.tag];
-            
-            if (model.errorcode == KKStatus_success) {
-                
-                //解析数据,存储数据库
-                NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
-                
-                NSLog(@"%@",jsonStr);
-                
-                [self showOkAlertViewTitle:message message:KKLanguage(@"lab_login_email_tips") dataArr:nil callback:^(NSInteger index, NSString *titleString) {
-                    [self.navigationController popViewControllerAnimated:YES];
-                }];
-                
-                
-            }else{
-                
-                [self showToastInView:self.view time:KKToastTime title:message];
-            }
-            
-        } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
-            
-            [self showToastInView:self.view time:KKToastTime title:KKLanguage(@"tips_fail")];
-            
-        }] ;
       
     }else if (sender.tag == KKButton_Login_PhoneTitle){
         
@@ -424,6 +349,67 @@
         self.emailLoginView.loginBtn.alpha = 0.5;
         self.emailLoginView.loginBtn.enabled = NO;
     }
+}
+
+/*
+ 用户注册
+ */
+- (void)userRegister:(NSDictionary*)dic type:(KKButtonType)type{
+    
+    [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
+    
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_register withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+    
+        if (model.code == KKStatus_success) {
+            
+            if (type == KKButton_Account_Register_email) {
+                
+                [self showOkAlertViewTitle:model.msg message:KKLanguage(@"lab_login_email_tips") dataArr:nil callback:^(NSInteger index, NSString *titleString) {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }];
+                
+            }else{
+                
+                [self showToastInWindows:KKToastTime title:model.msg];
+                
+                //解析数据,存储数据库
+                HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithDictionary:model.data error:nil];
+              
+                /*
+                 插入本地数据库
+                 */
+                BOOL result = [HJFMDBModel userInfoInsert:userModel];
+                
+                /*
+                 保存当前登陆者信息
+                 */
+                
+                [[HJCommon shareInstance] saveUserInfo:userModel];
+                
+                /*
+                 进入主界面
+                 */
+                
+                if (result) {
+                    
+                    AppDelegate *  appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                    [appDelegate loginMain];
+                    
+                }
+            }
+        
+        }else{
+            
+            [self showToastInView:self.view time:KKToastTime title:model.msg];
+        }
+        
+    } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+        
+        [self showToastInView:self.view time:KKToastTime title:KKLanguage(@"tips_fail")];
+        
+    }] ;
+  
+    
 }
 
 #pragma mark ============== 返回 ===============

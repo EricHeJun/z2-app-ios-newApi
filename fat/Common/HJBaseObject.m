@@ -45,11 +45,9 @@
 @implementation HJChatInfoModel
 @end
 
-@implementation HJRegisterPhoneModel
+@implementation HJRegisterModel
 @end
 
-@implementation HJRegisterEmailModel
-@end
 
 @implementation HJVcodeModel
 @end
