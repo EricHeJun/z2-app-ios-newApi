@@ -46,10 +46,14 @@
     [request setValue:@"1" forHTTPHeaderField:@"Sign"];
     [request setValue:Authorization==nil?@"":Authorization forHTTPHeaderField:@"Authorization"];
     
-    NSData * bodyData = [NSJSONSerialization dataWithJSONObject:dataString options:NSJSONWritingPrettyPrinted error:nil];
+    if (dataString) {
+        
+        NSData * bodyData = [NSJSONSerialization dataWithJSONObject:dataString options:NSJSONWritingPrettyPrinted error:nil];
+        
+        [request setHTTPBody:bodyData];
+    }
     
-    [request setHTTPBody:bodyData];
-
+    
     
     NSURLSession *session = [NSURLSession sharedSession];
     
@@ -64,7 +68,7 @@
                 
             } else {  //请求成功
                 
-                NSMutableDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+                NSDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                 
                 NSError* err = nil;
                 
@@ -74,10 +78,12 @@
                     
                     successResult(data,dic,model);
                     
-                    NSLog(@"hj_success");
+                    NSLog(@"hj_success:%@",dic);
                     
                 }else{
+                    
                     NSLog(@"hj_success:%@",dic);
+                    
                 }
             
             }

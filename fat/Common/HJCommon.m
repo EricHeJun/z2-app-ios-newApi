@@ -166,7 +166,7 @@ NSString *const KKMuscle_guide_calf =  @"KKMuscle_guide_calf";
 
     NSUserDefaults * ud =  [NSUserDefaults standardUserDefaults];
     
-    [ud setBool:YES forKey:KKAccount_Login]; 
+  
    
     [ud setObject:model.userId forKey:KKAccount_userId];
     
@@ -180,7 +180,9 @@ NSString *const KKMuscle_guide_calf =  @"KKMuscle_guide_calf";
 - (void)saveToken:(NSString*)token{
     
     NSUserDefaults * ud =  [NSUserDefaults standardUserDefaults];
+    
     [ud setObject:token forKey:KKAccount_Token];
+    [ud setBool:YES forKey:KKAccount_Login]; 
     
     [ud synchronize];
 }

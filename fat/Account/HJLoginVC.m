@@ -255,24 +255,15 @@
     
     [KKHttpRequest HttpRequestType:k_POST withrequestType:YES withDataString:dic withUrl:KK_URL_api_user_login withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
         
-        if (model.code == KKStatus_success ||
-            model.code == KKStatus_token) {
+        if (model.code == KKStatus_success) {
             
             [self showToastInWindows:KKToastTime title:model.msg];
             
             //保存token信息
             [[HJCommon shareInstance] saveToken:model.token];
           
-            /*
-             进入主界面
-             */
-            
-            if (result) {
-                
-                AppDelegate *  appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                [appDelegate loginMain];
-        
-            }
+            //获取用户信息
+            [self getUserInfo];
             
         }else{
     
@@ -285,6 +276,26 @@
         
     }];
     
+}
+
+#pragma mark ============== 获取用户信息 ===============
+- (void)getUserInfo{
+
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:nil withUrl:KK_URL_api_user_info withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+        
+        /*
+         进入主界面
+         */
+        if (result) {
+            
+            AppDelegate *  appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [appDelegate loginMain];
+    
+        }
+        
+    } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+        
+    }];
 }
 
 // login 颜色变换

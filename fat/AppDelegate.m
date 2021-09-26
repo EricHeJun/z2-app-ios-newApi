@@ -104,23 +104,21 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         
         if (model.code == KKStatus_success) {
             
-            DLog(@"用户信息:%@",model);
+            //解析数据,存储数据库
 
-//            //解析数据,存储数据库
-//            NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
-//            DLog(@"用户信息:%@",jsonStr);
-//            
-//            HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithString:jsonStr error:nil];
-//            
-//            /*
-//             插入本地数据库
-//             */
-//            [HJFMDBModel userInfoInsert:userModel];
-//            
-//            /*
-//             保存当前登陆者信息
-//             */
-//            [HJCommon shareInstance].userInfoModel = userModel;
+            HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithDictionary:model.data error:nil];
+            
+            DLog(@"用户信息:%@",userModel);
+            
+            /*
+             插入本地数据库
+             */
+            [HJFMDBModel userInfoInsert:userModel];
+            
+            /*
+             保存当前登陆者信息
+             */
+            [HJCommon shareInstance].userInfoModel = userModel;
             
         }else {
             

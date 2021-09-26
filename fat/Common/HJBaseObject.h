@@ -26,7 +26,7 @@
  旧
  */
 @property (assign,nonatomic)int  errorcode;
-@property (copy,nonatomic)NSString * data;
+@property (strong,nonatomic)NSDictionary * data;
 @property (copy,nonatomic)NSString * errormessage;
 @property (copy,nonatomic)NSString * commandCode;
 
@@ -151,6 +151,13 @@
 
 /// 当前用户信息
 @interface HJUserInfoModel : HJBaseObject
+
+/*
+ 新增
+ */
+@property (copy,nonatomic)NSString<Optional> * loginName;
+@property (copy,nonatomic)NSString<Optional> * phonenumber;
+@property (copy,nonatomic)NSString<Optional> * avatar;     //头像图片
 
 @property (copy,nonatomic)NSString<Optional> * userName;
 @property (copy,nonatomic)NSString<Optional> * birthday;
