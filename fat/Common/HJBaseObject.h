@@ -49,6 +49,13 @@
  */
 @interface HJVcodeModel : HJBaseObject
 
+/*
+ 新
+ */
+@property (copy,nonatomic)NSString *phoneNumber;
+
+
+
 @property (copy,nonatomic)NSString * mobile;
 @property (copy,nonatomic)NSString * apiType;
 @property (copy,nonatomic)NSString * isForeign;

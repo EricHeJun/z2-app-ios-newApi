@@ -32,8 +32,8 @@ NSString *const SECRET_KEY = @"Mt2JtH7rP4h-2018";
 NSString *const KK_URL_api_user_login = @"/api/user/login";  //登陆
 NSString *const KK_URL_api_user_logout = @"/api/user/logout";  //退出
 NSString *const KK_URL_api_user_info = @"/api/user/info";    //获取用户信息
-
-
+NSString *const KK_URL_api_user_sms_code = @"/api/user/sms_code";
+NSString *const KK_URL_api_user_register = @"/api/user/register";
 
 
 /*
@@ -165,12 +165,10 @@ NSString *const KKMuscle_guide_calf =  @"KKMuscle_guide_calf";
     return [[[NSUserDefaults standardUserDefaults] objectForKey:KKAccount_Login] boolValue];
 }
 
-- (void)saveUserInfo:(HJUserInfoModel*)model withToken:(NSString*)token{
+- (void)saveUserInfo:(HJUserInfoModel*)model{
 
     NSUserDefaults * ud =  [NSUserDefaults standardUserDefaults];
     
-  
-   
     [ud setObject:model.userId forKey:KKAccount_userId];
     
     [ud synchronize];

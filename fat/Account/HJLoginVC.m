@@ -283,6 +283,29 @@
 
     [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:nil withUrl:KK_URL_api_user_info withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
+        if (model.code == KKStatus_success) {
+            
+            //解析数据,存储数据库
+
+            HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithDictionary:model.data error:nil];
+            
+            DLog(@"用户信息:%@",userModel);
+            
+            /*
+             插入本地数据库
+             */
+            [HJFMDBModel userInfoInsert:userModel];
+            
+            /*
+             保存当前登陆者信息
+             */
+            [HJCommon shareInstance].userInfoModel = userModel;
+            
+            
+            [[HJCommon shareInstance] saveUserInfo:userModel];
+            
+        }
+        
         /*
          进入主界面
          */

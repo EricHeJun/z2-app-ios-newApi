@@ -204,6 +204,7 @@
             NSLog(@"%@",areaNum);
             [self.phoneLoginView.phoneLoginAreaBtn setTitle:areaNum forState:UIControlStateNormal];
         };
+        
         [self.navigationController pushViewController:vc animated:YES];
         
         
@@ -216,33 +217,23 @@
         }
         
         HJVcodeModel * model = [HJVcodeModel new];
-        model.mobile = [NSString stringWithFormat:@"%@%@",self.phoneLoginView.phoneLoginAreaBtn.titleLabel.text,mobile];
-        model.apiType = KK_URL_user_register;
-        model.isForeign =[self.phoneLoginView.phoneLoginAreaBtn.titleLabel.text isEqualToString:@"+86"]?@"0":@"1";
+        model.phoneNumber = [NSString stringWithFormat:@"%@%@",self.phoneLoginView.phoneLoginAreaBtn.titleLabel.text,mobile];
         
         NSDictionary * dic = [model toDictionary];
-        
-      
+
         [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
         
-        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_verification_code withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
-            
-            NSString * message = [HJTipsUtil resultTips:model type:sender.tag];
+        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_sms_code withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
             
             if (model.errorcode == KKStatus_success) {
                 
-                [self showToastInView:self.view time:KKToastTime title:message];
+                [self showToastInView:self.view time:KKToastTime title:model.msg];
                 
                 [self startCountDownAction:sender];
                 
-                //解析数据,存储数据库
-                NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
-                
-                NSLog(@"%@",jsonStr);
-                
             }else{
                 
-                [self showToastInView:self.view time:KKToastTime title:message];
+                [self showToastInView:self.view time:KKToastTime title:model.msg];
             }
             
         } withError:^(id result, NSDictionary *resultDic, HJHTTPModel * model) {
@@ -298,7 +289,7 @@
                  保存当前登陆者信息
                  */
                 
-                [[HJCommon shareInstance] saveUserInfo:userModel withToken:model.token];
+                [[HJCommon shareInstance] saveUserInfo:userModel];
                 
                 /*
                  进入主界面

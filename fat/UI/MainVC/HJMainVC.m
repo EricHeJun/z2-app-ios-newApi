@@ -43,12 +43,13 @@
     /*
      当前登陆者信息
      */
-    [HJCommon shareInstance].userInfoModel = [HJFMDBModel queryCurrectUserInfoWithUserID:[[NSUserDefaults standardUserDefaults] objectForKey:KKAccount_userId]];
+    NSString * userId = [[NSUserDefaults standardUserDefaults] objectForKey:KKAccount_userId];
+    [HJCommon shareInstance].userInfoModel = [HJFMDBModel queryCurrectUserInfoWithUserID:userId];
     
     /*
      获取当前用户最新信息 - 如果没有设置信息, 跳转到信息界面
      */
-    if ([HJCommon shareInstance].userInfoModel.nickName==nil) {
+    if ([HJCommon shareInstance].userInfoModel.userName==nil) {
         
         HJUserInfoVC * vc = [[HJUserInfoVC alloc] init];
         vc.navigationItem.title = KKLanguage(@"lab_me_complete_info");
