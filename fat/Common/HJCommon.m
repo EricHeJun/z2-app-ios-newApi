@@ -12,7 +12,7 @@
 /** URL、主地址 **/
 
 /// 外网正式
-NSString *const HOST_URl = @"http://admin.marvoto.com:80";
+NSString *const HOST_URl = @"http://admin.marvoto.com";
 NSString *const STS_URl  = @"http://api.marvoto.com/MarvotoCloudService/mobile/sts_server";
 
 
@@ -167,13 +167,22 @@ NSString *const KKMuscle_guide_calf =  @"KKMuscle_guide_calf";
     NSUserDefaults * ud =  [NSUserDefaults standardUserDefaults];
     
     [ud setBool:YES forKey:KKAccount_Login]; 
-    [ud setObject:token forKey:KKAccount_Token];
+   
     [ud setObject:model.userId forKey:KKAccount_userId];
     
     [ud synchronize];
     
     _userInfoModel = model;
     
+}
+
+//保存token
+- (void)saveToken:(NSString*)token{
+    
+    NSUserDefaults * ud =  [NSUserDefaults standardUserDefaults];
+    [ud setObject:token forKey:KKAccount_Token];
+    
+    [ud synchronize];
 }
 
 - (HJUserInfoModel*)userInfoModel{

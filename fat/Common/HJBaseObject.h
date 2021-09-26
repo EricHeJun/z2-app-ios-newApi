@@ -15,13 +15,20 @@
 @end
 
 @interface HJHTTPModel : HJBaseObject
+/*
+ 新
+ */
+@property (assign,nonatomic)int  code;
+@property (copy,nonatomic)NSString * msg;
+@property (copy,nonatomic)NSString * token;
 
+/*
+ 旧
+ */
 @property (assign,nonatomic)int  errorcode;
+@property (copy,nonatomic)NSString * data;
 @property (copy,nonatomic)NSString * errormessage;
 @property (copy,nonatomic)NSString * commandCode;
-@property (copy,nonatomic)NSString * data;
-@property (copy,nonatomic)NSString * timeStamp;
-@property (copy,nonatomic)NSString * token;
 
 
 @end
@@ -33,6 +40,7 @@
 
 @property (copy,nonatomic)NSString * loginName;
 @property (copy,nonatomic)NSString * passWord;
+@property (copy,nonatomic)NSString * userType; //选填
 
 @end
 

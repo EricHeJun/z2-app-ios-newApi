@@ -102,35 +102,33 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
     [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:nil withUrl:KK_URL_api_user_info withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
-        if (model.errorcode == KKStatus_success) {
+        if (model.code == KKStatus_success) {
+            
+            DLog(@"用户信息:%@",model);
 
+//            //解析数据,存储数据库
+//            NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
+//            DLog(@"用户信息:%@",jsonStr);
+//            
+//            HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithString:jsonStr error:nil];
+//            
+//            /*
+//             插入本地数据库
+//             */
+//            [HJFMDBModel userInfoInsert:userModel];
+//            
+//            /*
+//             保存当前登陆者信息
+//             */
+//            [HJCommon shareInstance].userInfoModel = userModel;
             
-            //解析数据,存储数据库
-            NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
-            DLog(@"用户信息:%@",jsonStr);
+        }else {
             
-            HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithString:jsonStr error:nil];
-            
-            /*
-             插入本地数据库
-             */
-            [HJFMDBModel userInfoInsert:userModel];
-            
-            /*
-             保存当前登陆者信息
-             */
-            [HJCommon shareInstance].userInfoModel = userModel;
-            
-        }else if (model.errorcode == -2 ||
-                  model.errorcode == -3 ||
-                  model.errorcode == -8){
-            
-            [[HJCommon shareInstance] logout:NO toast:model.errormessage];
+            [[HJCommon shareInstance] logout:NO toast:model.msg];
             
         }
         
     } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
-        
         
     }];
 }

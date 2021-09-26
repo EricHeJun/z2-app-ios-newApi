@@ -203,56 +203,9 @@
         model.loginName = [NSString stringWithFormat:@"%@%@",self.phoneLoginView.phoneLoginAreaBtn.titleLabel.text,mobile];
         model.passWord = password;
 
-
         NSDictionary * dic = [model toDictionary];
         
-        [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_login_loading")];
-        
-        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_login withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
-            
-            NSString * message = [HJTipsUtil resultTips:model type:sender.tag];
-            
-            if (model.errorcode == KKStatus_success) {
-                
-                [self showToastInWindows:KKToastTime title:message];
-                
-                //解析数据,存储数据库
-                NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
-                HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithString:jsonStr error:nil];
-                DLog(@"%@",jsonStr);
-                /*
-                 插入本地数据库
-                 */
-                BOOL result = [HJFMDBModel userInfoInsert:userModel];
-                
-                /*
-                 保存当前登陆者信息
-                 */
-                
-                [[HJCommon shareInstance] saveUserInfo:userModel withToken:model.token];
-                
-                /*
-                 进入主界面
-                 */
-                
-                if (result) {
-                    
-                    AppDelegate *  appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                    [appDelegate loginMain];
-                    
-                }
-                
-            }else{
-        
-                [self showToastInView:self.view time:KKToastTime*2 title:message];
-            }
-            
-        
-        } withError:^(id result, NSDictionary *resultDic, HJHTTPModel * model) {
-            
-            [self showToastInView:self.view time:KKToastTime title:KKLanguage(@"tips_fail")];
-            
-        }];
+        [self getUserToken:dic];
         
     
     }else if (sender.tag == KKButton_Account_Login_email){
@@ -260,61 +213,15 @@
         NSString * mobile =self.emailLoginView.loginTf.text;
         NSString * password = self.emailLoginView.loginPswTf.text;
         
-
         HJLoginModel * model = [[HJLoginModel alloc] init];
         model.loginName = mobile;
         model.passWord =password;
     
-       
         NSDictionary * dic = [model toDictionary];
+        
+        [self getUserToken:dic];
+        
     
-        [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_login_loading")];
-        
-        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_login withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
-            
-            NSString * message = [HJTipsUtil resultTips:model type:sender.tag];
-            
-            if (model.errorcode == KKStatus_success) {
-                
-                [self showToastInWindows:KKToastTime title:message];
-                
-                //解析数据,存储数据库
-                NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
-                HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithString:jsonStr error:nil];
-                DLog(@"%@",jsonStr);
-                /*
-                 插入本地数据库
-                 */
-                
-                BOOL result = [HJFMDBModel userInfoInsert:userModel];
-                
-                /*
-                 保存当前登陆者信息
-                 */
-                
-                [[HJCommon shareInstance] saveUserInfo:userModel withToken:model.token];
-                
-                /*
-                 进入主界面
-                 */
-                
-                if (result) {
-                    
-                    AppDelegate *  appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-                    [appDelegate loginMain];
-                    
-                }
-                
-                
-            }else{
-                
-                [self showToastInView:self.view time:KKToastTime*2 title:message];
-            }
-            
-        } withError:^(id result, NSDictionary *resultDic, HJHTTPModel * model) {
-            [self showToastInView:self.view time:KKToastTime title:KKLanguage(@"tips_fail")];
-        }];
-        
     }else if (sender.tag == KKButton_Account_Forget){
         
         HJForgotVC * vc = [[HJForgotVC alloc] init];
@@ -337,7 +244,46 @@
         _lineView.center = CGPointMake( _emailBtn.center.x, _lineView.center.y);
         [self.scrollView setContentOffset:CGPointMake(KKSceneWidth, 0) animated:YES];
     }
+}
+
+/*
+ 获取用户token
+ */
+- (void)getUserToken:(NSDictionary*)dic{
     
+    [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_login_loading")];
+    
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:YES withDataString:dic withUrl:KK_URL_api_user_login withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
+        
+        if (model.code == KKStatus_success ||
+            model.code == KKStatus_token) {
+            
+            [self showToastInWindows:KKToastTime title:model.msg];
+            
+            //保存token信息
+            [[HJCommon shareInstance] saveToken:model.token];
+          
+            /*
+             进入主界面
+             */
+            
+            if (result) {
+                
+                AppDelegate *  appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+                [appDelegate loginMain];
+        
+            }
+            
+        }else{
+    
+            [self showToastInView:self.view time:KKToastTime*2 title:model.msg];
+        }
+        
+    } withError:^(id result, NSDictionary *resultDic, HJHTTPModel * model) {
+        
+        [self showToastInView:self.view time:KKToastTime title:KKLanguage(@"tips_fail")];
+        
+    }];
     
 }
 

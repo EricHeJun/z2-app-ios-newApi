@@ -17,8 +17,6 @@
            withSuccess:(WXModuleCallback)successResult 
              withError:(WXModuleCallback)errorResult{
     
-    NSMutableURLRequest * request;
-    
     NSString * Authorization = [[NSUserDefaults standardUserDefaults] objectForKey:KKAccount_Token];
     
     NSString * timestamp = [[HJCommon shareInstance] getTimestamp];
@@ -27,63 +25,31 @@
     
     requesrUrl = [NSString stringWithFormat:@"%@%@",requesrUrl,url];
     
-    
-    
-    NSMutableDictionary * requestdic =  [NSMutableDictionary dictionary];
-    
 
     NSString * Language = [[[[HJCommon shareInstance] getCurrectLocalLanguage] componentsSeparatedByString:@"-"] firstObject];
-    [requestdic setObject:Language forKey:@"Language"];
-    [requestdic setObject:[[HJCommon shareInstance] getAppBundleID] forKey:@"App-Id"];
-    [requestdic setObject:@"1.0" forKey:@"Version"];
-    [requestdic setObject:timestamp forKey:@"Ts"];
-    [requestdic setObject:@"1" forKey:@"Sign"];
-    [requestdic setObject:Authorization==nil?@"":Authorization forKey:@"Authorization"];
+  
     
+    //json 作为请求体
+    
+    NSMutableURLRequest * request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:requesrUrl parameters:nil error:nil];
 
     
-    switch (type) {
-            
-        case k_POST:
-            
-            //json 作为请求体
-            if (postJson) {
-                
-                request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:requesrUrl parameters:requestdic error:nil];
-                //请求头类型
-                [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-                [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-                
-                
-                NSData * bodyData = [NSJSONSerialization dataWithJSONObject:dataString options:NSJSONWritingPrettyPrinted error:nil];
-                
-                [request setHTTPBody:bodyData];
-                
-                
-            }else{ //表单 形式作为请求体
-                
-                request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:requesrUrl parameters:requestdic error:nil];
-                
-                
-                [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-                [request setValue:@"application/json,text/plain" forHTTPHeaderField:@"Accept"];
-                
-            }
-            
-           
+    //请求头类型
+    [request setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     
-            break;
-            
-        case k_GET:
-            
-            request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"GET" URLString:requesrUrl parameters:requestdic error:nil];
+    [request setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Accept"];
+    
+    [request setValue:[[HJCommon shareInstance] getAppBundleID]  forHTTPHeaderField:@"App-Id"];
+    [request setValue:Language forHTTPHeaderField:@"Language"];
+    [request setValue:@"1.0" forHTTPHeaderField:@"Version"];
+    [request setValue:timestamp forHTTPHeaderField:@"Ts"];
+    [request setValue:@"1" forHTTPHeaderField:@"Sign"];
+    [request setValue:Authorization==nil?@"":Authorization forHTTPHeaderField:@"Authorization"];
+    
+    NSData * bodyData = [NSJSONSerialization dataWithJSONObject:dataString options:NSJSONWritingPrettyPrinted error:nil];
+    
+    [request setHTTPBody:bodyData];
 
-    
-            break;
-            
-        default:
-            break;
-    }
     
     NSURLSession *session = [NSURLSession sharedSession];
     
@@ -109,6 +75,7 @@
                     successResult(data,dic,model);
                     
                     NSLog(@"hj_success");
+                    
                 }else{
                     NSLog(@"hj_success:%@",dic);
                 }
