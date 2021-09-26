@@ -30,7 +30,10 @@ NSString *const SECRET_KEY = @"Mt2JtH7rP4h-2018";
  新API
  */
 NSString *const KK_URL_api_user_login = @"/api/user/login";  //登陆
+NSString *const KK_URL_api_user_logout = @"/api/user/logout";  //退出
 NSString *const KK_URL_api_user_info = @"/api/user/info";    //获取用户信息
+
+
 
 
 /*

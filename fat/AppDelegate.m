@@ -107,7 +107,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
             HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithDictionary:model.data error:nil];
             
-            DLog(@"用户信息:%@",userModel);
+            //DLog(@"用户信息:%@",userModel);
             
             /*
              插入本地数据库

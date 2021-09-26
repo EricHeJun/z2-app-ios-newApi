@@ -200,7 +200,19 @@
         [self showAlertSheetTitle:KKLanguage(@"lab_me_userInfo_logout_title") message:nil dataArr:@[KKLanguage(@"lab_me_userInfo_logout")] callback:^(NSInteger index, NSString *titleString) {
             
             if ([titleString isEqualToString:KKLanguage(@"lab_me_userInfo_logout")]) {
-                [[HJCommon shareInstance] logout:NO toast:@""];
+                
+                [KKHttpRequest HttpRequestType:k_POST withrequestType:YES withDataString:nil withUrl:KK_URL_api_user_logout withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+                    
+                    if (model.code == KKStatus_success) {
+                        [[HJCommon shareInstance] logout:NO toast:@""];
+                    }else{
+                        [self showToastInView:self.view time:KKToastTime title:model.msg];
+                    }
+                    
+                } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+                    
+                }];
+            
             }
             
         }];

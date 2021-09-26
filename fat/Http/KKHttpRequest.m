@@ -52,8 +52,7 @@
         
         [request setHTTPBody:bodyData];
     }
-    
-    
+
     
     NSURLSession *session = [NSURLSession sharedSession];
     
@@ -89,7 +88,7 @@
                 
                 }else{
                     
-                    NSLog(@"hj_success:%@",dic);
+                    NSLog(@"特殊hj_success:%@",dic);
                     
                 }
             
