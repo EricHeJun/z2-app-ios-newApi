@@ -173,16 +173,21 @@
         
         if (model.errorcode == KKStatus_success) {
             
-            //解析数据,存储数据库
-            NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
-            DLog(@"jsonStr:%@",jsonStr);
-            
-            [[HJCommon shareInstance] logout:YES toast:KKLanguage(@"tips_login_again")];
-            
+            [KKHttpRequest HttpRequestType:k_POST withrequestType:YES withDataString:nil withUrl:KK_URL_api_user_logout withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+                
+                if (model.code == KKStatus_success) {
+                    [[HJCommon shareInstance] logout:YES toast:KKLanguage(@"tips_login_again")];
+                }else{
+                    [self showToastInView:self.view time:KKToastTime title:model.msg];
+                }
+                
+            } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+                
+            }];
             
         }else{
             
-            [self showToastInView:self.view time:KKToastTime title:model.errormessage];
+            [self showToastInView:self.view time:KKToastTime title:model.msg];
         }
         
     } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
