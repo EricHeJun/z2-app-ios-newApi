@@ -34,16 +34,15 @@ NSString *const KK_URL_api_user_logout = @"/api/user/logout";  //退出
 NSString *const KK_URL_api_user_info = @"/api/user/info";    //获取用户信息
 NSString *const KK_URL_api_user_sms_code = @"/api/user/sms_code";
 NSString *const KK_URL_api_user_register = @"/api/user/register";
-
-
+NSString *const KK_URL_api_user_modify_pwd = @"/api/user/modify_pwd";    //手机找回密码
+NSString *const KK_URL_api_user_email_find_pwd = @"/api/user/email_find_pwd";    //邮箱找回密码
 /*
  旧API
  */
-NSString *const KK_URL_user_login_v2 = @"user_login_v2";
-NSString *const KK_URL_user_register = @"user_register";                     //注册
-NSString *const KK_URL_user_register_v2 = @"user_register_v2";               //注册v2
-NSString *const KK_URL_find_password_by_phone= @"find_password_by_phone";    //手机找回密码
-NSString *const KK_URL_find_password_by_email= @"find_password_by_email";     //邮箱找回密码
+//NSString *const KK_URL_user_login_v2 = @"user_login_v2";
+//NSString *const KK_URL_user_register = @"user_register";                     //注册
+//NSString *const KK_URL_user_register_v2 = @"user_register_v2";               //注册v2
+
 NSString *const KK_URL_modify_password = @"modify_password";
 
 NSString *const KK_URL_verification_code= @"verification_code";          //发送验证码

@@ -116,25 +116,22 @@
     
             [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
             
-            [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_find_password_by_email withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
-                
-                NSString * message = [HJTipsUtil resultTips:model type:sender.tag];
-                
-                if (model.errorcode == KKStatus_success) {
+            [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_email_find_pwd withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+            
+                if (model.code == KKStatus_success) {
                     
-                    [self showToastInWindows:KKToastTime*2 title:message];
+                    [self showToastInWindows:KKToastTime*2 title:model.msg];
                     [self.navigationController popViewControllerAnimated:YES];
                     
                 }else{
                     
-                    [self showToastInView:self.view time:KKToastTime title:message];
+                    [self showToastInView:self.view time:KKToastTime title:model.msg];
                 }
                 
             } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
                 
                 [self showToastInView:self.view time:KKToastTime title:KKLanguage(@"tips_fail")];
             }];
-            
             
         }else if (_forgotEmailView.hidden == YES){
             
@@ -153,24 +150,22 @@
             [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
         
             HJForgetPhoneModel * model = [HJForgetPhoneModel new];
-            model.mobile = [NSString stringWithFormat:@"%@%@",self.forgotPhoneView.phoneLoginAreaBtn.titleLabel.text,mobile];
-            model.codeNum = vcode;
-            model.passWord = psw;
+            model.phoneNumber = [NSString stringWithFormat:@"%@%@",self.forgotPhoneView.phoneLoginAreaBtn.titleLabel.text,mobile];
+            model.code = vcode;
+            model.newPwd = psw;
             
             NSDictionary * dic =  [model toDictionary];
             
-            [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_find_password_by_phone withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+            [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_modify_pwd withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
                 
-                NSString * message = [HJTipsUtil resultTips:model type:sender.tag];
-                
-                if (model.errorcode == KKStatus_success) {
+                if (model.code == KKStatus_success) {
                     
-                    [self showToastInWindows:KKToastTime*2 title:message];
+                    [self showToastInWindows:KKToastTime*2 title:model.msg];
                     [self.navigationController popViewControllerAnimated:YES];
                     
                 }else{
                     
-                    [self showToastInView:self.view time:KKToastTime title:message];
+                    [self showToastInView:self.view time:KKToastTime title:model.msg];
                 }
                 
             } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
@@ -204,32 +199,24 @@
             return;
         }
     
-        
         HJVcodeModel * model = [HJVcodeModel new];
-        model.mobile = [NSString stringWithFormat:@"%@%@",self.forgotPhoneView.phoneLoginAreaBtn.titleLabel.text,mobile];
-        model.apiType = KK_URL_find_password_by_phone;
-        model.isForeign =[self.forgotPhoneView.phoneLoginAreaBtn.titleLabel.text isEqualToString:@"+86"]?@"0":@"1";
-        model.countryAreaCode = self.forgotPhoneView.phoneLoginAreaBtn.titleLabel.text;
-        
+        model.phoneNumber = [NSString stringWithFormat:@"%@%@",self.forgotPhoneView.phoneLoginAreaBtn.titleLabel.text,mobile];
         
         NSDictionary * dic = [model toDictionary];
         
-        
         [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
         
-        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_verification_code withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
+        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_sms_code withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
             
-            NSString * message = [HJTipsUtil resultTips:model type:sender.tag];
-            
-            if (model.errorcode == KKStatus_success) {
+            if (model.code == KKStatus_success) {
                 
-                [self showToastInView:self.view time:KKToastTime title:message];
+                [self showToastInView:self.view time:KKToastTime title:model.msg];
                 
-                 [self startCountDownAction:sender];
+                [self startCountDownAction:sender];
                 
             }else{
                 
-                [self showToastInView:self.view time:KKToastTime title:message];
+                [self showToastInView:self.view time:KKToastTime title:model.msg];
             }
         
         } withError:^(id result, NSDictionary *resultDic, HJHTTPModel * model) {

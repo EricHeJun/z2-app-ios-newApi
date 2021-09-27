@@ -80,9 +80,9 @@
  */
 @interface HJForgetPhoneModel : HJBaseObject
 
-@property (copy,nonatomic)NSString * mobile;
-@property (copy,nonatomic)NSString * passWord;
-@property (copy,nonatomic)NSString * codeNum;
+@property (copy,nonatomic)NSString * phoneNumber;
+@property (copy,nonatomic,getter = thenewPwd)NSString * newPwd;
+@property (copy,nonatomic)NSString * code;
 
 @end
 

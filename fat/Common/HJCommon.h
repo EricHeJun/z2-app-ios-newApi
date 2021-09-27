@@ -36,13 +36,15 @@ extern NSString *const KK_URL_api_user_info;    //获取用户信息
 
 extern NSString *const KK_URL_api_user_sms_code; //手机验证码
 extern NSString *const KK_URL_api_user_register; //注册
+extern NSString *const KK_URL_api_user_modify_pwd;     //手机找回密码
+extern NSString *const KK_URL_api_user_email_find_pwd; //邮箱找回密码
 
 
-extern NSString *const KK_URL_user_login_v2;              //登陆
-extern NSString *const KK_URL_user_register;
-extern NSString *const KK_URL_user_register_v2;           //注册
-extern NSString *const KK_URL_find_password_by_phone;     //手机找回密码
-extern NSString *const KK_URL_find_password_by_email;     //邮箱找回密码
+/*
+ 旧
+ */
+
+
 extern NSString *const KK_URL_modify_password;            //修改密码
 
 extern NSString *const KK_URL_verification_code;          //发送验证码
