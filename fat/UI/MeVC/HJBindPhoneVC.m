@@ -110,7 +110,7 @@
 
 - (void)refreshUI{
     
-    _phoneLab.text = [HJCommon shareInstance].userInfoModel.userName;
+    _phoneLab.text = [HJCommon shareInstance].userInfoModel.phonenumber;
 
 }
 
