@@ -40,6 +40,9 @@ extern NSString *const KK_URL_api_user_modify_pwd;     //手机找回密码
 extern NSString *const KK_URL_api_user_email_find_pwd; //邮箱找回密码
 extern NSString *const KK_URL_api_user_reset_pwd; 
 
+extern NSString *const KK_URL_api_user_modify_phone;  //修改手机号
+extern NSString *const KK_URL_api_user_set_email;     //绑定邮箱
+
 /*
  旧
  */
@@ -56,7 +59,6 @@ extern NSString *const KK_URL_sts;                        //获取sts授权
 extern NSString *const KK_URL_query_fat_record;           //查询历史记录
 extern NSString *const KK_URL_get_user;                   //获取用户数据
 
-extern NSString *const KK_URL_user_change_phone;          //更换手机号
 extern NSString *const KK_URL_unbound_user;               //解绑
 extern NSString *const KK_URL_bound_user;                 //绑定
 extern NSString *const KK_URL_add_fat_record;             //上报测试记录

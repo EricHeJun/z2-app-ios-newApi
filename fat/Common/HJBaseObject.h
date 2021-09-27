@@ -122,9 +122,8 @@
  */
 @interface HJReplacePhoneModel : HJBaseObject
 
-@property (copy,nonatomic)NSString * userId;
-@property (copy,nonatomic,getter= thenewMobile)NSString * newMobile;
-@property (copy,nonatomic)NSString * codeNum;
+@property (copy,nonatomic)NSString * phoneNumber;
+@property (copy,nonatomic)NSString * code;
 @end
 
 /*

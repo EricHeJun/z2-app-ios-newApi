@@ -38,7 +38,7 @@
     
     self.view.backgroundColor = kkBgGrayColor;
     
-    if ([HJCommon shareInstance].userInfoModel.userName == nil) {
+    if ([HJCommon shareInstance].userInfoModel.phonenumber == nil) {
 
         [self.view addSubview:self.bindView];
         
@@ -135,28 +135,23 @@
         }
         
         HJVcodeModel * model = [HJVcodeModel new];
-        model.mobile = [NSString stringWithFormat:@"%@%@",self.bindView.phoneLoginAreaBtn.titleLabel.text,mobile];
-        model.apiType = KK_URL_user_change_phone;
-        model.isForeign =[self.bindView.phoneLoginAreaBtn.titleLabel.text isEqualToString:@"+86"]?@"0":@"1";
+        model.phoneNumber = [NSString stringWithFormat:@"%@%@",self.bindView.phoneLoginAreaBtn.titleLabel.text,mobile];
         
         NSDictionary * dic = [model toDictionary];
         
         [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
         
-        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_verification_code withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
+        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_sms_code withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
             
-            NSString * message = [HJTipsUtil resultTips:model type:sender.tag];
-            
-            if (model.errorcode == KKStatus_success) {
+            if (model.code == KKStatus_success) {
                 
-                [self showToastInView:self.view time:KKToastTime title:message];
+                [self showToastInView:self.view time:KKToastTime title:model.msg];
                 
                 [self startCountDownAction:sender];
                 
-                
             }else{
                 
-                [self showToastInView:self.view time:KKToastTime title:message];
+                [self showToastInView:self.view time:KKToastTime title:model.msg];
             }
             
         } withError:^(id result, NSDictionary *resultDic, HJHTTPModel * model) {
@@ -170,35 +165,25 @@
         NSString * mobile =self.bindView.phoneTf.text;
         NSString * vcode = self.bindView.vcodeTf.text;
         
-        
         HJReplacePhoneModel * model = [HJReplacePhoneModel new];
-        model.newMobile = [NSString stringWithFormat:@"%@%@",self.bindView.phoneLoginAreaBtn.titleLabel.text,mobile];
-        model.userId = [HJCommon shareInstance].userInfoModel.userId;
-        model.codeNum =vcode;
+        model.phoneNumber = [NSString stringWithFormat:@"%@%@",self.bindView.phoneLoginAreaBtn.titleLabel.text,mobile];
+        model.code =vcode;
         
         NSDictionary * dic = [model toDictionary];
         
-      
         [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
         
-        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_user_change_phone withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
+        [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_modify_phone withSuccess:^(id result, NSDictionary *resultDic,HJHTTPModel * model) {
             
-            NSString * message = [HJTipsUtil resultTips:model type:sender.tag];
-            
-            if (model.errorcode == KKStatus_success) {
+            if (model.code == KKStatus_success) {
                 
-                //解析数据,存储数据库
-                NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
-                NSLog(@"%@",jsonStr);
-                
-                
-                [self showToastInWindows:KKToastTime title:KKLanguage(@"lab_BLE_setting_success")];
+                [self showToastInWindows:KKToastTime title:model.msg];
                 
                 [self.navigationController popViewControllerAnimated:YES];
                 
             }else{
                 
-                [self showToastInView:self.view time:KKToastTime title:message];
+                [self showToastInView:self.view time:KKToastTime title:model.msg];
             }
             
         } withError:^(id result, NSDictionary *resultDic, HJHTTPModel * model) {

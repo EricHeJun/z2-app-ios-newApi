@@ -38,7 +38,8 @@ NSString *const KK_URL_api_user_modify_pwd = @"/api/user/modify_pwd";    //手�
 NSString *const KK_URL_api_user_email_find_pwd = @"/api/user/email_find_pwd";    //邮箱找回密码
 NSString *const KK_URL_api_user_reset_pwd = @"/api/user/reset_pwd";   //密码重置
 
-
+NSString *const KK_URL_api_user_modify_phone = @"/api/user/modify_phone";
+NSString *const KK_URL_api_user_set_email = @"/api/user/set_email";   
 
 /*
  旧API

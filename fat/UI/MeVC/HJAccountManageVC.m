@@ -151,10 +151,10 @@
         
     }else if ([title isEqualToString:KKLanguage(@"lab_login_phone")]) {
         
-        if ([HJCommon shareInstance].userInfoModel.userName == nil) {
+        if ([HJCommon shareInstance].userInfoModel.phonenumber == nil) {
             cell.detailTextLabel.text = KKLanguage(@"lab_me_userInfo_no_bind");
         }else{
-            cell.detailTextLabel.text = [HJCommon shareInstance].userInfoModel.userName;
+            cell.detailTextLabel.text = [HJCommon shareInstance].userInfoModel.phonenumber;
         }
     }
 }

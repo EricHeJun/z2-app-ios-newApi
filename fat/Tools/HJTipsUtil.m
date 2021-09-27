@@ -42,32 +42,6 @@
         }
         
         
-    }else if ([url isEqualToString:KK_URL_user_change_phone]){
-        
-        /*
-         修改绑定手机号
-         */
-        if (model.errorcode == 0) {
-            
-            message = KKLanguage(@"lab_tips_http_text14");
-            
-        }else if (model.errorcode == -1){
-            
-            message = KKLanguage(@"lab_tips_http_text3");
-            
-        }else if (model.errorcode == -2){
-            
-            message = KKLanguage(@"lab_tips_http_text4");
-            
-        }else if (model.errorcode == -3){
-            
-            message = KKLanguage(@"lab_tips_http_text7");
-            
-        }else if (model.errorcode == -4){
-            
-            message = KKLanguage(@"lab_tips_http_text15");
-        }
-        
     }else if([url isEqualToString:KK_URL_unbound_user]){
         
         /*
