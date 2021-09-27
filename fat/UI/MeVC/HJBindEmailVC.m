@@ -281,22 +281,19 @@
     [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
     
     HJBindEmailModel * model = [HJBindEmailModel new];
-    model.userId = [HJCommon shareInstance].userInfoModel.userId;
-    model.mode = email;
-    model.type = @"0";
-    
+    model.email = email;
+
     NSDictionary *dic = [model toDictionary];
-    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_bound_user withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_set_email withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
-        if (model.errorcode == KKStatus_success) {
+        if (model.code == KKStatus_success) {
             
-            [self showToastInWindows:KKToastTime title:KKLanguage(@"lab_tip_bind_text_1")];
+            [self showToastInWindows:KKToastTime title:model.msg];
             [self.navigationController popViewControllerAnimated:YES];
-            
-            
+
         }else{
             
-            [self showToastInView:self.view time:KKToastTime title:model.errormessage];
+            [self showToastInView:self.view time:KKToastTime title:model.msg];
             
         }
         
@@ -313,8 +310,7 @@
     [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
     
     HJBindEmailModel * model = [HJBindEmailModel new];
-    model.userId = [HJCommon shareInstance].userInfoModel.userId;
-    model.type = @"0";
+  
     
     NSDictionary *dic = [model toDictionary];
     [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_unbound_user withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
@@ -345,22 +341,13 @@
     
     [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
     
-    HJUserInfoModel * model = [HJUserInfoModel new];
-    model.userId = [HJCommon shareInstance].userInfoModel.userId;
-    
-    NSDictionary *dic = [model toDictionary];
-    
-    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_get_user withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:nil withUrl:KK_URL_api_user_info withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
-        if (model.errorcode == KKStatus_success) {
+        if (model.code == KKStatus_success) {
             
             [self hideLoading];
-            
-            //解析数据,存储数据库
-            NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
-            DLog(@"jsonStr:%@",jsonStr);
-            
-            HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithString:jsonStr error:nil];
+  
+            HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithDictionary:model.data error:nil];
             
             [HJCommon shareInstance].userInfoModel = userModel;
             
@@ -377,8 +364,6 @@
         [self showToastInView:self.view time:KKToastTime title:KKLanguage(@"tips_fail")];
         
     }];
-    
-    
     
 }
 

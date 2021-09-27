@@ -224,11 +224,7 @@
     
     [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
     
-    HJUserInfoModel * model = [HJUserInfoModel new];
-    
-    NSDictionary *dic = [model toDictionary];
-    
-    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_info withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:nil withUrl:KK_URL_api_user_info withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
         if (model.code == KKStatus_success) {
             [self hideLoading];

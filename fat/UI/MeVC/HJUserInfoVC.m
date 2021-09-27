@@ -156,7 +156,7 @@
 - (void)refreshUI{
     
  
-    [_nicknameBtn setTitle:self.userModel.nickName.length?self.userModel.nickName:KKLanguage(@"lab_me_userInfo_no_setting") forState:UIControlStateNormal];
+    [_nicknameBtn setTitle:self.userModel.loginName.length?self.userModel.loginName:KKLanguage(@"lab_me_userInfo_no_setting") forState:UIControlStateNormal];
     
     NSString * imageStr = [self.userModel.sex isEqualToString:@"1"]?@"img_me_userinfo_man":@"img_me_userinfo_woman";
     [_sexBtn setImage:[UIImage imageNamed:imageStr] forState:UIControlStateNormal];
