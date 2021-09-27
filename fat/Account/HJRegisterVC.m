@@ -286,6 +286,7 @@
         
         
         HJRegisterModel * model = [HJRegisterModel new];
+        
         model.loginName = mobile;
         model.passWord = password;
 

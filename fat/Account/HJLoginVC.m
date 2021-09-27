@@ -215,7 +215,7 @@
         
         HJLoginModel * model = [[HJLoginModel alloc] init];
         model.loginName = mobile;
-        model.passWord =password;
+        model.passWord = password;
     
         NSDictionary * dic = [model toDictionary];
         
