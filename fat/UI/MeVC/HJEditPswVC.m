@@ -161,17 +161,16 @@
     
     
     HJEditPswModel * model = [HJEditPswModel new];
-    model.userId = [HJCommon shareInstance].userInfoModel.userId;
-    model.oldPassWord = oldPsw;
-    model.newPassWord = freshPsw;
+    model.oldPwd = oldPsw;
+    model.newPwd = freshPsw;
     
     NSDictionary * dic = [model toDictionary];
     
     [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
     
-    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_modify_password withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_user_reset_pwd withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
-        if (model.errorcode == KKStatus_success) {
+        if (model.code == KKStatus_success) {
             
             [KKHttpRequest HttpRequestType:k_POST withrequestType:YES withDataString:nil withUrl:KK_URL_api_user_logout withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
                 

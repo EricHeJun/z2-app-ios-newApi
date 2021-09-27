@@ -99,9 +99,8 @@
  */
 @interface HJEditPswModel : HJBaseObject
 
-@property (copy,nonatomic)NSString * userId;
-@property (copy,nonatomic)NSString * oldPassWord;
-@property (copy,nonatomic,getter = theNewPasswd)NSString * newPassWord;
+@property (copy,nonatomic)NSString * oldPwd;
+@property (copy,nonatomic,getter = thenewPwd)NSString * newPwd;
 
 
 @end

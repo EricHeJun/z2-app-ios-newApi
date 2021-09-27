@@ -36,14 +36,13 @@ NSString *const KK_URL_api_user_sms_code = @"/api/user/sms_code";
 NSString *const KK_URL_api_user_register = @"/api/user/register";
 NSString *const KK_URL_api_user_modify_pwd = @"/api/user/modify_pwd";    //手机找回密码
 NSString *const KK_URL_api_user_email_find_pwd = @"/api/user/email_find_pwd";    //邮箱找回密码
+NSString *const KK_URL_api_user_reset_pwd = @"/api/user/reset_pwd";   //密码重置
+
+
+
 /*
  旧API
  */
-//NSString *const KK_URL_user_login_v2 = @"user_login_v2";
-//NSString *const KK_URL_user_register = @"user_register";                     //注册
-//NSString *const KK_URL_user_register_v2 = @"user_register_v2";               //注册v2
-
-NSString *const KK_URL_modify_password = @"modify_password";
 
 NSString *const KK_URL_verification_code= @"verification_code";          //发送验证码
 NSString *const KK_URL_add_member = @"add_member";

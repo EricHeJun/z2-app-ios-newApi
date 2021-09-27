@@ -38,14 +38,11 @@ extern NSString *const KK_URL_api_user_sms_code; //手机验证码
 extern NSString *const KK_URL_api_user_register; //注册
 extern NSString *const KK_URL_api_user_modify_pwd;     //手机找回密码
 extern NSString *const KK_URL_api_user_email_find_pwd; //邮箱找回密码
-
+extern NSString *const KK_URL_api_user_reset_pwd; 
 
 /*
  旧
  */
-
-
-extern NSString *const KK_URL_modify_password;            //修改密码
 
 extern NSString *const KK_URL_verification_code;          //发送验证码
 extern NSString *const KK_URL_add_member;                 //添加成员
