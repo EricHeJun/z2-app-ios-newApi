@@ -43,15 +43,14 @@ extern NSString *const KK_URL_api_user_reset_pwd;
 extern NSString *const KK_URL_api_user_modify_phone;  //修改手机号
 extern NSString *const KK_URL_api_user_set_email;     //绑定邮箱
 
+extern NSString *const KK_URL_api_fat_member_list;     //查询成员列表
+extern NSString *const KK_URL_api_fat_member_del;       //删除成员
+extern NSString *const KK_URL_api_fat_member_submit;    //添加成员
+extern NSString *const KK_URL_api_fat_member_modify;    //修改信息
 /*
  旧
  */
 
-extern NSString *const KK_URL_add_member;                 //添加成员
-
-extern NSString *const KK_URL_query_del_member;           //删除成员
-extern NSString *const KK_URL_set_user;                   //修改信息
-extern NSString *const KK_URL_query_member_by_userid;     //查询成员列表
 extern NSString *const KK_URL_add_suggest;                //意见反馈
 
 extern NSString *const KK_URL_sts;                        //获取sts授权

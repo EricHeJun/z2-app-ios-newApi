@@ -46,6 +46,8 @@
     [request setValue:@"1" forHTTPHeaderField:@"Sign"];
     [request setValue:Authorization==nil?@"":Authorization forHTTPHeaderField:@"Authorization"];
     
+    [request setTimeoutInterval:12];
+    
     if (dataString) {
         
         NSData * bodyData = [NSJSONSerialization dataWithJSONObject:dataString options:NSJSONWritingPrettyPrinted error:nil];

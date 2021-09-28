@@ -59,7 +59,7 @@
         
         vc.selectBlock = ^(HJUserInfoModel *userModel) {
             
-            self.testAccountView.textLab.text = userModel.nickName;
+            self.testAccountView.textLab.text = userModel.userName;
             [self.testAccountView.topImageView sd_setImageWithURL:[NSURL URLWithString:[HJCommon shareInstance].userInfoModel.ossHeadImageUrl] placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_s"]];
             
         };
@@ -78,11 +78,6 @@
      */
     
     dispatch_queue_t queue =  dispatch_get_global_queue(0, 0);
-    dispatch_async(queue, ^{
-        [self uploadHistoryData];
-    });
-    
-    
     
     /*
      app更新 分线程执行
@@ -198,10 +193,7 @@
     /*
      用户视图
      */
-    NSString * nickName = [HJCommon shareInstance].selectModel.nickName;
-    if (nickName == nil) {
-        nickName = [HJCommon shareInstance].selectModel.name;
-    }
+    NSString * nickName = [HJCommon shareInstance].selectModel.userName;
 
     self.testAccountView.textLab.text = nickName;
     
@@ -381,46 +373,31 @@
 #pragma mark ============== 获取成员列表 ===============
 - (void)getAccountList{
     
-   
-    HJMemberHttpModel * model = [[HJMemberHttpModel alloc] init];
-    model.userId = [[NSUserDefaults standardUserDefaults] objectForKey:KKAccount_userId];
-    
-    NSDictionary * dic = [model toDictionary];
-    
-    
     [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
     
-    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_query_member_by_userid withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:nil withUrl:KK_URL_api_fat_member_list withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
-        if (model.errorcode == KKStatus_success) {
+        if (model.code == KKStatus_success) {
             
-            [self hideLoading];
+            [self showToastInView:self.view time:KKToastTime title:model.msg];
+        
+            NSMutableArray * modelArr = [HJUserInfoModel arrayOfModelsFromDictionaries:model.data error:nil];
             
-            //解析数据,存储数据库
-            NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
+            NSMutableArray * accountArr = [NSMutableArray array];
             
-            //NSLog(@"jsonStr:%@",jsonStr);
-            
-            if (jsonStr) {
-                
-                NSArray * modelArr = [HJUserInfoModel arrayOfModelsFromString:jsonStr error:nil];
-                
-                NSMutableArray * accountArr = [NSMutableArray array];
-                
-                for (HJUserInfoModel * obj in modelArr) {
-                    obj.firstCharactor =[[HJCommon shareInstance] firstCharactor:obj.name];
-                    [accountArr addObject:obj];
-                }
-                
-                modelArr = [accountArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-                    
-                    HJUserInfoModel * mod1 = obj1;
-                    HJUserInfoModel * mod2 = obj2;
-                    return [mod1.firstCharactor compare:mod2.firstCharactor options:NSCaseInsensitiveSearch];
-                }];
-                
-                [self initDataAccount:modelArr];
+            for (HJUserInfoModel * obj in modelArr) {
+                obj.firstCharactor =[[HJCommon shareInstance] firstCharactor:obj.userName];
+                [accountArr addObject:obj];
             }
+            
+            modelArr = [accountArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                
+                HJUserInfoModel * mod1 = obj1;
+                HJUserInfoModel * mod2 = obj2;
+                return [mod1.firstCharactor compare:mod2.firstCharactor options:NSCaseInsensitiveSearch];
+            }];
+            
+            [self initDataAccount:modelArr];
             
         }else{
             
@@ -533,7 +510,7 @@
             
             [HJCommon shareInstance].selectModel = userModel;
             
-            self.testAccountView.textLab.text = userModel.name;
+            self.testAccountView.textLab.text = userModel.userName;
             [self.testAccountView.topImageView sd_setImageWithURL:[NSURL URLWithString:userModel.httpHeadImage] placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_s"]];
             
         };

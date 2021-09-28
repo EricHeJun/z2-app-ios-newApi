@@ -33,7 +33,7 @@
      */
     
     HJUserInfoModel * testUser = [[HJUserInfoModel alloc] init];
-    testUser.nickName = KKLanguage(@"lab_main_visitor_test");
+    testUser.userName = KKLanguage(@"lab_main_visitor_test");
     testUser.id = KKAccount_TestId;
     testUser.sex = [NSString stringWithFormat:@"%d",[[HJCommon shareInstance] getTestSex]];
     
@@ -47,7 +47,7 @@
         [realAccount addObject:model];
         
         for (HJUserInfoModel * mod in memberArr) {
-            mod.nickName = mod.name;                  //此句意思 是 修改昵称
+
             [realAccount addObject:mod];
         }
     }
@@ -157,7 +157,7 @@
         
     }
     
-    NSString * nickName = userModel.nickName;
+    NSString * nickName = userModel.userName;
     /*
      没有选中id时,就是自己
      */

@@ -41,37 +41,33 @@
     [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
     
     
-    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_query_member_by_userid withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_fat_member_list withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
-        if (model.errorcode == KKStatus_success) {
+        if (model.code == KKStatus_success) {
             
-            [self hideLoading];
+            [self showToastInView:self.view time:KKToastTime title:model.msg];
             
-            //解析数据,存储数据库
-            NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
             
-            if (jsonStr) {
-                
-                NSMutableArray * array = [HJUserInfoModel arrayOfModelsFromString:jsonStr error:nil];
-                
-                NSMutableArray * accountArr = [NSMutableArray array];
-                
-                for (HJUserInfoModel * obj in array) {
-                    obj.firstCharactor =[[HJCommon shareInstance] firstCharactor:obj.name];
-                    [accountArr addObject:obj];
-                }
-                
-                self.accountArr = [accountArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-                    
-                    HJUserInfoModel * mod1 = obj1;
-                    HJUserInfoModel * mod2 = obj2;
-                    
-                    return [mod1.firstCharactor compare:mod2.firstCharactor options:NSCaseInsensitiveSearch];
-                }];
-                
-                [self.tableView reloadData];
-                
+            NSMutableArray * array = [HJUserInfoModel arrayOfModelsFromDictionaries:@[model.data] error:nil];
+            
+            NSMutableArray * accountArr = [NSMutableArray array];
+            
+            for (HJUserInfoModel * obj in array) {
+                obj.firstCharactor =[[HJCommon shareInstance] firstCharactor:obj.userName];
+                [accountArr addObject:obj];
             }
+            
+            self.accountArr = [accountArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                
+                HJUserInfoModel * mod1 = obj1;
+                HJUserInfoModel * mod2 = obj2;
+                
+                return [mod1.firstCharactor compare:mod2.firstCharactor options:NSCaseInsensitiveSearch];
+            }];
+            
+            [self.tableView reloadData];
+            
+            
             
         }else{
             [self showToastInView:self.view time:KKToastTime title:model.errormessage];
@@ -144,7 +140,7 @@
     UIImageView * imageView = (UIImageView*)[cell viewWithTag:20];
     UILabel * textLabel = (UILabel*)[cell viewWithTag:30];
     
-    textLabel.text = model.name;
+    textLabel.text = model.userName;
     
     [imageView sd_setImageWithURL:[NSURL URLWithString:model.httpHeadImage] placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_s"]];
     

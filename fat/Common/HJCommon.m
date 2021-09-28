@@ -39,15 +39,17 @@ NSString *const KK_URL_api_user_email_find_pwd = @"/api/user/email_find_pwd";   
 NSString *const KK_URL_api_user_reset_pwd = @"/api/user/reset_pwd";   //密码重置
 
 NSString *const KK_URL_api_user_modify_phone = @"/api/user/modify_phone";
-NSString *const KK_URL_api_user_set_email = @"/api/user/set_email";   
+NSString *const KK_URL_api_user_set_email = @"/api/user/set_email"; 
+
+NSString *const KK_URL_api_fat_member_list = @"/api/fat/member_list";   
+NSString *const KK_URL_api_fat_member_del = @"/api/fat/member_del";    
+NSString *const KK_URL_api_fat_member_submit = @"/api/fat/member_submit";
 
 /*
  旧API
  */
+NSString *const KK_URL_api_fat_member_modify = @"/api/fat/member_modify";
 
-NSString *const KK_URL_add_member = @"add_member";
-NSString *const KK_URL_query_del_member = @"query_del_member";
-NSString *const KK_URL_set_user = @"set_user";
 NSString *const KK_URL_query_member_by_userid = @"query_member_by_userid";
 NSString *const KK_URL_add_suggest = @"add_suggest";
 NSString *const KK_URL_sts = @"sts";
@@ -274,7 +276,7 @@ NSString *const KKMuscle_guide_calf =  @"KKMuscle_guide_calf";
 
 - (NSString*)getSelectName{
     
-    return  _selectModel.nickName;
+    return  _selectModel.userName;
     
 }
 

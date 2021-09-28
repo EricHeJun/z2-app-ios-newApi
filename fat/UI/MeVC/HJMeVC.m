@@ -82,7 +82,7 @@
 
 - (void)refreshUI{
     
-    _shopNickerLab.text = [HJCommon shareInstance].userInfoModel.nickName;
+    _shopNickerLab.text = [HJCommon shareInstance].userInfoModel.userName;
     
     [_iconImageBtn sd_setImageWithURL:[NSURL URLWithString:[HJCommon shareInstance].userInfoModel.ossHeadImageUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_m"]];
     

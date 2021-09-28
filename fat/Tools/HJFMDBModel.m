@@ -107,7 +107,7 @@ FMDatabase * _db = nil;
         if([rs next]){
             
             //存在---更新替换
-            isok = [_db executeUpdate:@"update T_USER_INFO set userName = ?,nickName=?,userId=?,passWord=?,birthday=?,height=?,weight=?,ossHeadImageUrl=?,formatCreateTime=?,sex=?,status=?,createTime=?,id = ?,email = ?,isEmail = ? where userId = ?",model.userName,model.nickName,model.userId,model.passWord,model.birthday,model.height,model.weight,model.ossHeadImageUrl,model.formatCreateTime,model.sex,model.status,model.createTime,model.id,model.email,model.isEmail,model.userId];
+            isok = [_db executeUpdate:@"update T_USER_INFO set userName = ?,userId=?,passWord=?,birthday=?,height=?,weight=?,ossHeadImageUrl=?,formatCreateTime=?,sex=?,status=?,createTime=?,id = ?,email = ?,isEmail = ? where userId = ?",model.userName,model.userId,model.passWord,model.birthday,model.height,model.weight,model.ossHeadImageUrl,model.formatCreateTime,model.sex,model.status,model.createTime,model.id,model.email,model.isEmail,model.userId];
             
             if(isok){
                 
@@ -123,7 +123,7 @@ FMDatabase * _db = nil;
             
     
             //不存在--插入
-            isok=[_db executeUpdate:@"insert into T_USER_INFO (userName,nickName,userId,passWord,birthday,height,weight,ossHeadImageUrl,formatCreateTime,sex,status,createTime,id,email,isEmail) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);",model.userName,model.nickName,model.userId,model.passWord,model.birthday,model.height,model.weight,model.ossHeadImageUrl,model.formatCreateTime,model.sex,model.status,model.createTime,model.id,model.email,model.isEmail];
+            isok=[_db executeUpdate:@"insert into T_USER_INFO (userName,userId,passWord,birthday,height,weight,ossHeadImageUrl,formatCreateTime,sex,status,createTime,id,email,isEmail) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);",model.userName,model.userId,model.passWord,model.birthday,model.height,model.weight,model.ossHeadImageUrl,model.formatCreateTime,model.sex,model.status,model.createTime,model.id,model.email,model.isEmail];
             
             if(isok){
                 
@@ -171,7 +171,6 @@ FMDatabase * _db = nil;
     
     mod.userName=[resultSet stringForColumn:@"userName"];
     
-    mod.nickName=[resultSet stringForColumn:@"nickName"];
     
     mod.height=[resultSet stringForColumn:@"height"];
     
@@ -192,8 +191,6 @@ FMDatabase * _db = nil;
     mod.status=[resultSet stringForColumn:@"status"];
     
     mod.id = [resultSet stringForColumn:@"id"];
-    
-    mod.name = [resultSet stringForColumn:@"nickName"];
     
     mod.httpHeadImage = [resultSet stringForColumn:@"ossHeadImageUrl"];
     

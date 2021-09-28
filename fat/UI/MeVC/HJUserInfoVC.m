@@ -98,7 +98,6 @@
         /*
          编辑其他人
          */
-        self.userModel.nickName = self.userModel.name;
         self.userModel.ossHeadImageUrl = self.userModel.httpHeadImage;
     }
     
@@ -156,7 +155,7 @@
 - (void)refreshUI{
     
  
-    [_nicknameBtn setTitle:self.userModel.loginName.length?self.userModel.loginName:KKLanguage(@"lab_me_userInfo_no_setting") forState:UIControlStateNormal];
+    [_nicknameBtn setTitle:self.userModel.userName.length?self.userModel.userName:KKLanguage(@"lab_me_userInfo_no_setting") forState:UIControlStateNormal];
     
     NSString * imageStr = [self.userModel.sex isEqualToString:@"1"]?@"img_me_userinfo_man":@"img_me_userinfo_woman";
     [_sexBtn setImage:[UIImage imageNamed:imageStr] forState:UIControlStateNormal];
@@ -733,7 +732,7 @@
             
             [sw hideLoading];
             
-            [sw jointData:nil url:KK_URL_query_del_member];
+            [sw jointData:nil url:KK_URL_api_fat_member_del];
            
         }
         
@@ -761,17 +760,14 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         
         HJUserInfoModel * model = [[HJUserInfoModel alloc] init];
-        
-        model.userId = self.userModel.userId;
-        
-        model.name = model.nickName = _nicknameBtn.titleLabel.text;
+    
+        model.userName = _nicknameBtn.titleLabel.text;
         model.sex = _sexIndex==0?@"1":@"0";
         model.birthday = _birthdayBtn.titleLabel.text;
         model.height = _heightBtn.titleLabel.text;
         model.weight = _weightBtn.titleLabel.text;
         
-        model.icon = model.headImageUrl = headImageUrl.length?headImageUrl:self.userModel.headImageUrl;
-        
+        model.avatar = headImageUrl.length?headImageUrl:self.userModel.avatar;
         
         if (self.userInfoType == KKUserInfoType_other) {
             model.id = self.userModel.id;
@@ -780,7 +776,7 @@
         NSDictionary * dic = [model toDictionary];
         
         
-        if ([url isEqualToString:KK_URL_query_del_member]) {
+        if ([url isEqualToString:KK_URL_api_fat_member_del]) {
             
             [self showAlertSheetTitle:KKLanguage(@"lab_me_userInfo_delete_tips") message:nil dataArr:@[KKLanguage(@"lab_chat_delete")] callback:^(NSInteger index, NSString *titleString) {
                 
@@ -797,9 +793,12 @@
             
             if (self.userInfoType == KKUserInfoType_self) {
                 
-                [self editAccount:dic withUrl:KK_URL_set_user];
+                [self editAccount:dic withUrl:KK_URL_api_fat_member_modify];
+                
             }else{
-                [self editAccount:dic withUrl:KK_URL_add_member];
+                
+                [self editAccount:dic withUrl:KK_URL_api_fat_member_submit];
+                
             }
             
         }
@@ -826,12 +825,9 @@
     
     [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:url withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
-        if (model.errorcode == KKStatus_success ) {
+        if (model.code == KKStatus_success ) {
             
-            //解析数据,存储数据库
-            NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
-            DLog(@"jsonStr:%@",jsonStr);
-            HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithString:jsonStr error:nil];
+            HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithDictionary:model.data error:nil];
             
             if (self.userInfoType == KKUserInfoType_self){
                 
@@ -848,7 +844,7 @@
                     self.selectBlock(userModel);
                 }
                 
-                [self showToastInWindows:KKToastTime title:KKLanguage(@"tips_uploadimage_success")];
+                [self showToastInWindows:KKToastTime title:model.msg];
                 
             }else if (self.userInfoType == KKUserInfoType_add){
                 
@@ -856,21 +852,21 @@
                     self.selectBlock(userModel);
                 }
                 
-                [self showToastInWindows:KKToastTime title:KKLanguage(@"tips_uploadimage_success")];
+                [self showToastInWindows:KKToastTime title:model.msg];
                 
                 [self.navigationController popViewControllerAnimated:YES];
                 
             }else if (self.userInfoType == KKUserInfoType_other){
                 
-                if ([url isEqualToString:KK_URL_query_del_member]) {
+                if ([url isEqualToString:KK_URL_api_fat_member_del]) {
                     
-                    [self showToastInWindows:KKToastTime title:KKLanguage(@"tips_delete_success")];
+                    [self showToastInWindows:KKToastTime title:model.msg];
                     
                     [self.navigationController popViewControllerAnimated:YES];
                     
-                }else if ([url isEqualToString:KK_URL_add_member]){
+                }else if ([url isEqualToString:KK_URL_api_fat_member_submit]){
                     
-                    [self showToastInWindows:KKToastTime title:KKLanguage(@"tips_uploadimage_success")];
+                    [self showToastInWindows:KKToastTime title:model.msg];
                 }
                 
             }
@@ -889,7 +885,7 @@
             
         }else{
             
-            [self showToastInView:self.view time:KKToastTime title:model.errormessage];
+            [self showToastInView:self.view time:KKToastTime title:model.msg];
         }
         
     } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
