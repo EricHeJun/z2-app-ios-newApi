@@ -43,9 +43,8 @@
     /*
      当前登陆者信息
      */
-    NSString * userId = [[NSUserDefaults standardUserDefaults] objectForKey:KKAccount_userId];
-    [HJCommon shareInstance].userInfoModel = [HJFMDBModel queryCurrectUserInfoWithUserID:userId];
-    
+    [HJCommon shareInstance].userInfoModel = [HJFMDBModel queryCurrectUserInfoWithUser];
+
     /*
      获取当前用户最新信息 - 如果没有设置信息, 跳转到信息界面
      */

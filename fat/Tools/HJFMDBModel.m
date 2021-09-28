@@ -141,7 +141,7 @@ FMDatabase * _db = nil;
 /*
  查询用户表所有用户数据
  */
-+ (HJUserInfoModel*)queryCurrectUserInfoWithUserID:(NSString*)userID{
++ (HJUserInfoModel*)queryCurrectUserInfoWithUser{
     
     HJUserInfoModel * model = [[HJUserInfoModel alloc] init];
     
@@ -149,7 +149,7 @@ FMDatabase * _db = nil;
     
     if ([_db open]){
         
-        FMResultSet *resultSet =[_db executeQuery:@"select * from T_USER_INFO where userId = ?;",userID];
+        FMResultSet *resultSet =[_db executeQuery:@"select * from T_USER_INFO"];
         
         
         if([resultSet next]){
@@ -193,6 +193,12 @@ FMDatabase * _db = nil;
     mod.email = [resultSet stringForColumn:@"email"];
     
     mod.isEmail = [resultSet stringForColumn:@"isEmail"];
+    
+    mod.phoneNumber = [resultSet stringForColumn:@"phoneNumber"];
+    
+    mod.avatar =  [resultSet stringForColumn:@"avatar"];
+    
+    mod.sexLable = [resultSet stringForColumn:@"sexLable"];
     
     return mod;
     

@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 /*
  查询用户数据
  */
-+ (HJUserInfoModel*)queryCurrectUserInfoWithUserID:(NSString*)userID;
++ (HJUserInfoModel*)queryCurrectUserInfoWithUser;
 
 
 #pragma mark ============== 测量视图数据 ===============
