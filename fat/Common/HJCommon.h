@@ -47,7 +47,6 @@ extern NSString *const KK_URL_api_user_set_email;     //绑定邮箱
  旧
  */
 
-extern NSString *const KK_URL_verification_code;          //发送验证码
 extern NSString *const KK_URL_add_member;                 //添加成员
 
 extern NSString *const KK_URL_query_del_member;           //删除成员
@@ -57,10 +56,9 @@ extern NSString *const KK_URL_add_suggest;                //意见反馈
 
 extern NSString *const KK_URL_sts;                        //获取sts授权
 extern NSString *const KK_URL_query_fat_record;           //查询历史记录
-extern NSString *const KK_URL_get_user;                   //获取用户数据
 
 extern NSString *const KK_URL_unbound_user;               //解绑
-extern NSString *const KK_URL_bound_user;                 //绑定
+
 extern NSString *const KK_URL_add_fat_record;             //上报测试记录
 extern NSString *const KK_URL_del_fat_record;             //删除测试记录
 extern NSString *const KK_URL_query_fat_record_by_recently; //查询最近一条数据

@@ -45,7 +45,6 @@ NSString *const KK_URL_api_user_set_email = @"/api/user/set_email";
  旧API
  */
 
-NSString *const KK_URL_verification_code= @"verification_code";          //发送验证码
 NSString *const KK_URL_add_member = @"add_member";
 NSString *const KK_URL_query_del_member = @"query_del_member";
 NSString *const KK_URL_set_user = @"set_user";
@@ -54,7 +53,6 @@ NSString *const KK_URL_add_suggest = @"add_suggest";
 NSString *const KK_URL_sts = @"sts";
 NSString *const KK_URL_query_fat_record = @"query_fat_record";
 
-NSString *const KK_URL_get_user = @"get_user";
 
 NSString *const KK_URL_user_change_phone = @"user_change_phone";
 NSString *const KK_URL_unbound_user = @"unbound_user";
