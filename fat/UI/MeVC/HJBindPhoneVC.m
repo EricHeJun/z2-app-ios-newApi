@@ -38,7 +38,7 @@
     
     self.view.backgroundColor = kkBgGrayColor;
     
-    if ([HJCommon shareInstance].userInfoModel.phonenumber == nil) {
+    if ([HJCommon shareInstance].userInfoModel.phoneNumber == nil) {
 
         [self.view addSubview:self.bindView];
         
@@ -110,7 +110,7 @@
 
 - (void)refreshUI{
     
-    _phoneLab.text = [HJCommon shareInstance].userInfoModel.phonenumber;
+    _phoneLab.text = [HJCommon shareInstance].userInfoModel.phoneNumber;
 
 }
 

@@ -38,7 +38,7 @@ FMDatabase * _db = nil;
         BOOL isok=NO;
         
         //用户表
-        isok=[_db executeUpdate:@"create table if not exists T_USER_INFO (id text,userName text,nickName text,userId text,passWord text,birthday text,height text,weight text,ossHeadImageUrl text,formatCreateTime text,sex integer,status integer,createTime text,email text,isEmail text);"];
+        isok=[_db executeUpdate:@"create table if not exists T_USER_INFO (id text,userName text,userId text,birthday text,height text,weight text,ossHeadImageUrl text,formatCreateTime text,sex integer,createTime text,email text,isEmail text,phoneNumber text,avatar text,sexLable text);"];
         
         if (isok){
             
@@ -102,12 +102,12 @@ FMDatabase * _db = nil;
     
     if ([_db open]){
         
-        FMResultSet *rs =[_db executeQuery:@"select * from T_USER_INFO where userId = ?",model.userId];
+        FMResultSet *rs =[_db executeQuery:@"select * from T_USER_INFO"];
         
         if([rs next]){
             
             //存在---更新替换
-            isok = [_db executeUpdate:@"update T_USER_INFO set userName = ?,userId=?,passWord=?,birthday=?,height=?,weight=?,ossHeadImageUrl=?,formatCreateTime=?,sex=?,status=?,createTime=?,id = ?,email = ?,isEmail = ? where userId = ?",model.userName,model.userId,model.passWord,model.birthday,model.height,model.weight,model.ossHeadImageUrl,model.formatCreateTime,model.sex,model.status,model.createTime,model.id,model.email,model.isEmail,model.userId];
+          isok = [_db executeUpdate:@"update T_USER_INFO set userName = ?,userId=?,birthday=?,height=?,weight=?,ossHeadImageUrl=?,formatCreateTime=?,sex=?,createTime=?,id = ?,email = ?,isEmail = ?,phoneNumber = ?,avatar = ?,sexLable = ?",model.userName,model.userId,model.birthday,model.height,model.weight,model.ossHeadImageUrl,model.formatCreateTime,model.sex,model.createTime,model.id,model.email,model.isEmail,model.phoneNumber,model.avatar,model.sexLable];
             
             if(isok){
                 
@@ -121,9 +121,8 @@ FMDatabase * _db = nil;
             
         }else{
             
-    
             //不存在--插入
-            isok=[_db executeUpdate:@"insert into T_USER_INFO (userName,userId,passWord,birthday,height,weight,ossHeadImageUrl,formatCreateTime,sex,status,createTime,id,email,isEmail) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);",model.userName,model.userId,model.passWord,model.birthday,model.height,model.weight,model.ossHeadImageUrl,model.formatCreateTime,model.sex,model.status,model.createTime,model.id,model.email,model.isEmail];
+            isok=[_db executeUpdate:@"insert into T_USER_INFO (userName,userId,birthday,height,weight,ossHeadImageUrl,formatCreateTime,sex,createTime,id,email,isEmail,phoneNumber,avatar,sexLable) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);",model.userName,model.userId,model.birthday,model.height,model.weight,model.ossHeadImageUrl,model.formatCreateTime,model.sex,model.createTime,model.id,model.email,model.isEmail,model.phoneNumber,model.avatar,model.sexLable];
             
             if(isok){
                 
@@ -181,14 +180,11 @@ FMDatabase * _db = nil;
     mod.formatCreateTime=[resultSet stringForColumn:@"formatCreateTime"];
     
     mod.ossHeadImageUrl=[resultSet stringForColumn:@"ossHeadImageUrl"];
-    
-    mod.passWord=[resultSet stringForColumn:@"passWord"];
      
     mod.sex=[resultSet stringForColumn:@"sex"];
     
     mod.createTime=[resultSet stringForColumn:@"createTime"];
     
-    mod.status=[resultSet stringForColumn:@"status"];
     
     mod.id = [resultSet stringForColumn:@"id"];
     

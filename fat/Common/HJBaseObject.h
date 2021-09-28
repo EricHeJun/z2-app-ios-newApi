@@ -146,9 +146,9 @@
 /*
  新增
  */
-@property (copy,nonatomic)NSString<Optional> * phonenumber;
+@property (copy,nonatomic)NSString<Optional> * phoneNumber;
 @property (copy,nonatomic)NSString<Optional> * avatar;     //头像图片
-@property (copy,nonatomic)NSString<Optional> * sexLable;   //性别 文字
+@property (copy,nonatomic)NSString<Optional> * sexLable;   //性别 (男女 文字)
 
 
 @property (copy,nonatomic)NSString<Optional> * userName;
@@ -157,15 +157,12 @@
 @property (copy,nonatomic)NSString<Optional> * formatCreateTime;
 @property (copy,nonatomic)NSString<Optional> * height;
 @property (copy,nonatomic)NSString<Optional> * ossHeadImageUrl;
-@property (copy,nonatomic)NSString<Optional> * passWord;
 @property (copy,nonatomic)NSString<Optional> * sex;
-@property (copy,nonatomic)NSString<Optional> * status;
+
 @property (copy,nonatomic)NSString<Optional> * userId;
 @property (copy,nonatomic)NSString<Optional> * weight;
 @property (copy,nonatomic)NSString<Optional> *  id;   //当前选中成员id
 @property (copy,nonatomic)NSString<Optional> * httpHeadImage;
-@property (copy,nonatomic)NSString<Optional> * headImageUrl;
-@property (copy,nonatomic)NSString<Optional> * icon;
 
 @property (copy,nonatomic)NSString<Optional> *email;
 @property (copy,nonatomic)NSString<Optional> *isEmail;
