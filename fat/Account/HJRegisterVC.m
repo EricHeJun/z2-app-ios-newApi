@@ -416,8 +416,7 @@
              保存当前登陆者信息
              */
             [HJCommon shareInstance].userInfoModel = userModel;
-            
-            [[HJCommon shareInstance] saveUserInfo:userModel];
+        
             
         }
         

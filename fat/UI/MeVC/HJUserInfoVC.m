@@ -846,26 +846,13 @@
             
             if (self.userInfoType == KKUserInfoType_self){
                 
-                /*
-                 插入本地数据库
-                 */
-                
-                if (self.userInfoType == KKUserInfoType_self) {
-                    [HJFMDBModel userInfoInsert:userModel];
-                    [HJCommon shareInstance].userInfoModel = userModel;
-                }
-                
-                if(self.selectBlock){
-                    self.selectBlock(userModel);
-                }
-                
-                [self showToastInWindows:KKToastTime title:model.msg];
+                [self getUserInfo];
                 
             }else if (self.userInfoType == KKUserInfoType_add){
                 
-                if(self.selectBlock){
-                    self.selectBlock(userModel);
-                }
+//                if(self.selectBlock){
+//                    self.selectBlock(userModel);
+//                }
                 
                 [self showToastInWindows:KKToastTime title:model.msg];
                 
@@ -882,8 +869,6 @@
                 
             }
             
-            NSLog(@"%@ %@",[HJCommon shareInstance].selectModel.userId,[HJCommon shareInstance].selectModel.id);
-            
             if ([[HJCommon shareInstance].selectModel.userId isEqualToString:userModel.userId] ) {
                 
                 if ([[HJCommon shareInstance].selectModel.id intValue] == [userModel.id intValue]) {
@@ -891,8 +876,6 @@
                     [HJCommon shareInstance].selectModel.sex = userModel.sex;
                 }
             }
-            
-            
             
         }else{
             
@@ -903,7 +886,35 @@
         
         [self showToastInView:self.view time:KKToastTime title:KKLanguage(@"tips_fail")];
     }];
-    
+}
+
+#pragma mark ============== 获取用户信息 ===============
+- (void)getUserInfo{
+
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:nil withUrl:KK_URL_api_user_info withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+        
+        if (model.code == KKStatus_success) {
+            
+            //解析数据,存储数据库
+
+            HJUserInfoModel * userModel = [[HJUserInfoModel alloc] initWithDictionary:model.data error:nil];
+            DLog(@"用户信息:%@",userModel);
+            
+            /*
+             插入本地数据库
+             */
+            
+            [HJFMDBModel userInfoInsert:userModel];
+            [HJCommon shareInstance].userInfoModel = userModel;
+            
+            if(self.selectBlock){
+                self.selectBlock(userModel);
+            }
+        }
+       
+    } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+        
+    }];
 }
 
 - (void)timeChanged:(UIDatePicker *)datePicker{

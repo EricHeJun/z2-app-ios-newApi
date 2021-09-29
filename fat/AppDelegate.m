@@ -120,8 +120,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
             [HJCommon shareInstance].userInfoModel = userModel;
             
             
-            [[HJCommon shareInstance] saveUserInfo:userModel];
-            
         }
             
     } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {

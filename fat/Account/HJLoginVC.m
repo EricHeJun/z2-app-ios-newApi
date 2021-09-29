@@ -301,9 +301,6 @@
              */
             [HJCommon shareInstance].userInfoModel = userModel;
             
-            
-            [[HJCommon shareInstance] saveUserInfo:userModel];
-            
         }
         
         /*
