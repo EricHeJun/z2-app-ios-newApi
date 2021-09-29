@@ -79,7 +79,6 @@
          添加
          */
         self.userModel = [[HJUserInfoModel alloc] init];
-        self.userModel.userId =  [HJCommon shareInstance].userInfoModel.userId;
         self.userModel.sex = @"1";  //默认为男
         
         
@@ -98,7 +97,7 @@
         /*
          编辑其他人
          */
-        self.userModel.ossHeadImageUrl = self.userModel.httpHeadImage;
+        
     }
     
     
@@ -167,7 +166,7 @@
     
     [_weightBtn setTitle:self.userModel.weight.length?self.userModel.weight:KKLanguage(@"lab_me_userInfo_no_setting") forState:UIControlStateNormal];
     
-    [_iconImageBtn sd_setImageWithURL:[NSURL URLWithString:self.userModel.ossHeadImageUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_l"]];
+    [_iconImageBtn sd_setImageWithURL:[NSURL URLWithString:self.userModel.avatar] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_l"]];
     
     _iconImageBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
 
@@ -763,11 +762,23 @@
     
         model.userName = _nicknameBtn.titleLabel.text;
         model.sex = _sexIndex==0?@"1":@"0";
-        model.birthday = _birthdayBtn.titleLabel.text;
-        model.height = _heightBtn.titleLabel.text;
-        model.weight = _weightBtn.titleLabel.text;
         
-        model.avatar = headImageUrl.length?headImageUrl:self.userModel.avatar;
+        if (![_birthdayBtn.titleLabel.text isEqualToString:KKLanguage(@"lab_me_userInfo_no_setting")]) {
+            model.birthday = _birthdayBtn.titleLabel.text;
+        }
+        
+        if (![_heightBtn.titleLabel.text isEqualToString:KKLanguage(@"lab_me_userInfo_no_setting")]) {
+            model.height = _heightBtn.titleLabel.text;
+        }
+        
+        if (![_weightBtn.titleLabel.text isEqualToString:KKLanguage(@"lab_me_userInfo_no_setting")]) {
+            model.weight = _weightBtn.titleLabel.text;
+        }
+        
+
+        if (headImageUrl) {
+            model.avatar = headImageUrl;
+        }
         
         if (self.userInfoType == KKUserInfoType_other) {
             model.id = self.userModel.id;
@@ -792,6 +803,10 @@
         }else{
             
             if (self.userInfoType == KKUserInfoType_self) {
+                
+                [self editAccount:dic withUrl:KK_URL_api_user_modify];
+                
+            }else if(self.userInfoType == KKUserInfoType_other){
                 
                 [self editAccount:dic withUrl:KK_URL_api_fat_member_modify];
                 
@@ -858,15 +873,11 @@
                 
             }else if (self.userInfoType == KKUserInfoType_other){
                 
+                [self showToastInWindows:KKToastTime title:model.msg];
+                
                 if ([url isEqualToString:KK_URL_api_fat_member_del]) {
                     
-                    [self showToastInWindows:KKToastTime title:model.msg];
-                    
                     [self.navigationController popViewControllerAnimated:YES];
-                    
-                }else if ([url isEqualToString:KK_URL_api_fat_member_submit]){
-                    
-                    [self showToastInWindows:KKToastTime title:model.msg];
                 }
                 
             }

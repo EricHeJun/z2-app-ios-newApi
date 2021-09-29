@@ -48,7 +48,7 @@
     /*
      获取当前用户最新信息 - 如果没有设置信息, 跳转到信息界面
      */
-    if ([HJCommon shareInstance].userInfoModel.userName==nil) {
+    if ([HJCommon shareInstance].userInfoModel.userName.length == 0) {
         
         HJUserInfoVC * vc = [[HJUserInfoVC alloc] init];
         vc.navigationItem.title = KKLanguage(@"lab_me_complete_info");
@@ -59,7 +59,7 @@
         vc.selectBlock = ^(HJUserInfoModel *userModel) {
             
             self.testAccountView.textLab.text = userModel.userName;
-            [self.testAccountView.topImageView sd_setImageWithURL:[NSURL URLWithString:[HJCommon shareInstance].userInfoModel.ossHeadImageUrl] placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_s"]];
+            [self.testAccountView.topImageView sd_setImageWithURL:[NSURL URLWithString:[HJCommon shareInstance].userInfoModel.avatar] placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_s"]];
             
         };
     }
@@ -182,7 +182,7 @@
  
     
     
-    [_testAccountView.topImageView sd_setImageWithURL:[NSURL URLWithString:[HJCommon shareInstance].selectModel.httpHeadImage] placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_s"]];
+    [_testAccountView.topImageView sd_setImageWithURL:[NSURL URLWithString:[HJCommon shareInstance].selectModel.avatar] placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_s"]];
     _testAccountView.topImageView.contentMode = UIViewContentModeScaleAspectFill;
     
     if ([[HJCommon shareInstance].selectModel.id isEqualToString:KKAccount_TestId]) {
@@ -510,7 +510,7 @@
             [HJCommon shareInstance].selectModel = userModel;
             
             self.testAccountView.textLab.text = userModel.userName;
-            [self.testAccountView.topImageView sd_setImageWithURL:[NSURL URLWithString:userModel.httpHeadImage] placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_s"]];
+            [self.testAccountView.topImageView sd_setImageWithURL:[NSURL URLWithString:userModel.avatar] placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_s"]];
             
         };
     }

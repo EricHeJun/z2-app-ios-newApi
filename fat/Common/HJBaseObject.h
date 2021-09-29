@@ -156,13 +156,12 @@
 @property (copy,nonatomic)NSString<Optional> * createTime;
 @property (copy,nonatomic)NSString<Optional> * formatCreateTime;
 @property (copy,nonatomic)NSString<Optional> * height;
-@property (copy,nonatomic)NSString<Optional> * ossHeadImageUrl;
+
 @property (copy,nonatomic)NSString<Optional> * sex;
 
 @property (copy,nonatomic)NSString<Optional> * userId;
 @property (copy,nonatomic)NSString<Optional> * weight;
 @property (copy,nonatomic)NSString<Optional> *  id;   //当前选中成员id
-@property (copy,nonatomic)NSString<Optional> * httpHeadImage;
 
 @property (copy,nonatomic)NSString<Optional> *email;
 @property (copy,nonatomic)NSString<Optional> *isEmail;

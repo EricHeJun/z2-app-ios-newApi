@@ -33,7 +33,7 @@ extern NSString *const SECRET_KEY;
 extern NSString *const KK_URL_api_user_login;  //登陆
 extern NSString *const KK_URL_api_user_logout;  //退出
 extern NSString *const KK_URL_api_user_info;    //获取用户信息
-
+extern NSString *const KK_URL_api_user_modify;  //用户信息修改
 extern NSString *const KK_URL_api_user_sms_code; //手机验证码
 extern NSString *const KK_URL_api_user_register; //注册
 extern NSString *const KK_URL_api_user_modify_pwd;     //手机找回密码

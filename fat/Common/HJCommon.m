@@ -33,7 +33,9 @@ NSString *const KK_URL_api_user_login = @"/api/user/login";  //登陆
 NSString *const KK_URL_api_user_logout = @"/api/user/logout";  //退出
 NSString *const KK_URL_api_user_info = @"/api/user/info";    //获取用户信息
 NSString *const KK_URL_api_user_sms_code = @"/api/user/sms_code";
-NSString *const KK_URL_api_user_register = @"/api/user/register";
+NSString *const KK_URL_api_user_register = @"/api/user/register"; 
+NSString *const KK_URL_api_user_modify = @"/api/user/modify";  //用户信息修改
+
 NSString *const KK_URL_api_user_modify_pwd = @"/api/user/modify_pwd";    //手机找回密码
 NSString *const KK_URL_api_user_email_find_pwd = @"/api/user/email_find_pwd";    //邮箱找回密码
 NSString *const KK_URL_api_user_reset_pwd = @"/api/user/reset_pwd";   //密码重置
@@ -44,11 +46,13 @@ NSString *const KK_URL_api_user_set_email = @"/api/user/set_email";
 NSString *const KK_URL_api_fat_member_list = @"/api/fat/member_list";   
 NSString *const KK_URL_api_fat_member_del = @"/api/fat/member_del";    
 NSString *const KK_URL_api_fat_member_submit = @"/api/fat/member_submit";
+NSString *const KK_URL_api_fat_member_modify = @"/api/fat/member_modify";
+
 
 /*
  旧API
  */
-NSString *const KK_URL_api_fat_member_modify = @"/api/fat/member_modify";
+
 
 NSString *const KK_URL_query_member_by_userid = @"query_member_by_userid";
 NSString *const KK_URL_add_suggest = @"add_suggest";
@@ -1165,6 +1169,10 @@ NSString *const KKMuscle_guide_calf =  @"KKMuscle_guide_calf";
 }
 
 - (NSString *)firstCharactor:(NSString *)aString{
+    
+    if (aString==nil) {
+        return @"";
+    }
     
     NSMutableString *str = [NSMutableString stringWithString:aString];
     CFStringTransform((CFMutableStringRef)str,NULL, kCFStringTransformMandarinLatin,NO);

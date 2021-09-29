@@ -46,9 +46,9 @@
         if (model.code == KKStatus_success) {
             
             [self showToastInView:self.view time:KKToastTime title:model.msg];
+   
             
-            
-            NSMutableArray * array = [HJUserInfoModel arrayOfModelsFromDictionaries:@[model.data] error:nil];
+            NSMutableArray * array = [HJUserInfoModel arrayOfModelsFromDictionaries:model.data error:nil];
             
             NSMutableArray * accountArr = [NSMutableArray array];
             
@@ -66,7 +66,6 @@
             }];
             
             [self.tableView reloadData];
-            
             
             
         }else{
@@ -142,7 +141,7 @@
     
     textLabel.text = model.userName;
     
-    [imageView sd_setImageWithURL:[NSURL URLWithString:model.httpHeadImage] placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_s"]];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_s"]];
     
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     

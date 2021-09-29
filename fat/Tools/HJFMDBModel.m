@@ -107,7 +107,7 @@ FMDatabase * _db = nil;
         if([rs next]){
             
             //存在---更新替换
-          isok = [_db executeUpdate:@"update T_USER_INFO set userName = ?,userId=?,birthday=?,height=?,weight=?,ossHeadImageUrl=?,formatCreateTime=?,sex=?,createTime=?,id = ?,email = ?,isEmail = ?,phoneNumber = ?,avatar = ?,sexLable = ?",model.userName,model.userId,model.birthday,model.height,model.weight,model.ossHeadImageUrl,model.formatCreateTime,model.sex,model.createTime,model.id,model.email,model.isEmail,model.phoneNumber,model.avatar,model.sexLable];
+          isok = [_db executeUpdate:@"update T_USER_INFO set userName = ?,userId=?,birthday=?,height=?,weight=?,formatCreateTime=?,sex=?,createTime=?,id = ?,email = ?,isEmail = ?,phoneNumber = ?,avatar = ?,sexLable = ?",model.userName,model.userId,model.birthday,model.height,model.weight,model.formatCreateTime,model.sex,model.createTime,model.id,model.email,model.isEmail,model.phoneNumber,model.avatar,model.sexLable];
             
             if(isok){
                 
@@ -122,7 +122,7 @@ FMDatabase * _db = nil;
         }else{
             
             //不存在--插入
-            isok=[_db executeUpdate:@"insert into T_USER_INFO (userName,userId,birthday,height,weight,ossHeadImageUrl,formatCreateTime,sex,createTime,id,email,isEmail,phoneNumber,avatar,sexLable) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);",model.userName,model.userId,model.birthday,model.height,model.weight,model.ossHeadImageUrl,model.formatCreateTime,model.sex,model.createTime,model.id,model.email,model.isEmail,model.phoneNumber,model.avatar,model.sexLable];
+            isok=[_db executeUpdate:@"insert into T_USER_INFO (userName,userId,birthday,height,weight,formatCreateTime,sex,createTime,id,email,isEmail,phoneNumber,avatar,sexLable) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);",model.userName,model.userId,model.birthday,model.height,model.weight,model.formatCreateTime,model.sex,model.createTime,model.id,model.email,model.isEmail,model.phoneNumber,model.avatar,model.sexLable];
             
             if(isok){
                 
@@ -178,17 +178,14 @@ FMDatabase * _db = nil;
     mod.birthday=[resultSet stringForColumn:@"birthday"];
     
     mod.formatCreateTime=[resultSet stringForColumn:@"formatCreateTime"];
-    
-    mod.ossHeadImageUrl=[resultSet stringForColumn:@"ossHeadImageUrl"];
+
      
     mod.sex=[resultSet stringForColumn:@"sex"];
     
     mod.createTime=[resultSet stringForColumn:@"createTime"];
     
-    
     mod.id = [resultSet stringForColumn:@"id"];
     
-    mod.httpHeadImage = [resultSet stringForColumn:@"ossHeadImageUrl"];
     
     mod.email = [resultSet stringForColumn:@"email"];
     

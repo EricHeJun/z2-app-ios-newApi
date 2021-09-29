@@ -19,7 +19,6 @@
      获取当前使用者
      */
     HJUserInfoModel * model = [HJCommon shareInstance].userInfoModel;
-    model.httpHeadImage = model.ossHeadImageUrl;  //修复数据不同步的bug
     
     /*
      如果没有选中对象时,则默认一个
@@ -175,7 +174,7 @@
         
         //NSURL * url = [NSURL URLWithString:userModel.httpHeadImage];
         
-        [imageView sd_setImageWithURL:[NSURL URLWithString:userModel.httpHeadImage] placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_s"]];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:userModel.avatar] placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_s"]];
         
         imageView.contentMode =  UIViewContentModeScaleAspectFill;
         

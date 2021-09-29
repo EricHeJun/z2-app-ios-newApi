@@ -84,7 +84,7 @@
     
     _shopNickerLab.text = [HJCommon shareInstance].userInfoModel.userName;
     
-    [_iconImageBtn sd_setImageWithURL:[NSURL URLWithString:[HJCommon shareInstance].userInfoModel.ossHeadImageUrl] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_m"]];
+    [_iconImageBtn sd_setImageWithURL:[NSURL URLWithString:[HJCommon shareInstance].userInfoModel.avatar] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"img_me_userinfo_photo_m"]];
     
     _iconImageBtn.imageView.contentMode = UIViewContentModeScaleAspectFill;
 }
