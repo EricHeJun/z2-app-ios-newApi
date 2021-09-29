@@ -309,23 +309,17 @@
     
     [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
     
-    HJBindEmailModel * model = [HJBindEmailModel new];
-  
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:nil withUrl:KK_URL_api_user_unband_email withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
     
-    NSDictionary *dic = [model toDictionary];
-    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_unbound_user withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
-        
-        NSString * message = [HJTipsUtil resultTips:model type:0];
-        
-        if (model.errorcode == KKStatus_success) {
+        if (model.code == KKStatus_success) {
             
-            [self showToastInWindows:KKToastTime title:message];
+            [self showToastInWindows:KKToastTime title:model.msg];
             [self.navigationController popViewControllerAnimated:YES];
             
             
         }else{
             
-            [self showToastInView:self.view time:KKToastTime*2 title:message];
+            [self showToastInView:self.view time:KKToastTime*2 title:model.msg];
             
         }
         

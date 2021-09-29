@@ -42,6 +42,7 @@ NSString *const KK_URL_api_user_reset_pwd = @"/api/user/reset_pwd";   //密码�
 
 NSString *const KK_URL_api_user_modify_phone = @"/api/user/modify_phone";
 NSString *const KK_URL_api_user_set_email = @"/api/user/set_email"; 
+NSString *const KK_URL_api_user_unband_email = @"/api/user/unband_email";
 
 NSString *const KK_URL_api_fat_member_list = @"/api/fat/member_list";   
 NSString *const KK_URL_api_fat_member_del = @"/api/fat/member_del";    

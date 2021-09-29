@@ -42,6 +42,7 @@ extern NSString *const KK_URL_api_user_reset_pwd;
 
 extern NSString *const KK_URL_api_user_modify_phone;  //修改手机号
 extern NSString *const KK_URL_api_user_set_email;     //绑定邮箱
+extern NSString *const KK_URL_api_user_unband_email;  //邮箱解绑
 
 extern NSString *const KK_URL_api_fat_member_list;     //查询成员列表
 extern NSString *const KK_URL_api_fat_member_del;       //删除成员

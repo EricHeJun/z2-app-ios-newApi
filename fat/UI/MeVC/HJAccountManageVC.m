@@ -132,22 +132,7 @@
     
     if ([title isEqualToString:KKLanguage(@"lab_login_email")]) {
         
-        if ([[HJCommon shareInstance].userInfoModel.isEmail boolValue] == YES) {
-            cell.detailTextLabel.text = [HJCommon shareInstance].userInfoModel.email;
-        }else{
-            
-            if ([HJCommon shareInstance].userInfoModel.email != nil &&
-                [HJCommon shareInstance].userInfoModel.email.length != 0) {
-                
-                cell.detailTextLabel.text =[NSString stringWithFormat:@"%@(%@)",[HJCommon shareInstance].userInfoModel.email,KKLanguage(@"lab_tips_http_text21")];
-                
-            }else{
-                
-                cell.detailTextLabel.text = KKLanguage(@"lab_me_userInfo_no_bind");
-            }
-        
-        }
-    
+        cell.detailTextLabel.text = [HJCommon shareInstance].userInfoModel.isEmail;
         
     }else if ([title isEqualToString:KKLanguage(@"lab_login_phone")]) {
         
