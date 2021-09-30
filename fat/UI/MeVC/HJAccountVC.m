@@ -33,15 +33,9 @@
 
 - (void)initData{
     
-    HJMemberHttpModel * model = [[HJMemberHttpModel alloc] init];
-    model.userId = [HJCommon shareInstance].userInfoModel.userId;
-    
-    NSDictionary * dic = [model toDictionary];
-    
     [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
     
-    
-    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_fat_member_list withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:nil withUrl:KK_URL_api_fat_member_list withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
         if (model.code == KKStatus_success) {
             

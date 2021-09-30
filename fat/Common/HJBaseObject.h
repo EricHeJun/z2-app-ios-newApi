@@ -48,17 +48,7 @@
  发送验证码模型
  */
 @interface HJVcodeModel : HJBaseObject
-
-/*
- 新
- */
 @property (copy,nonatomic)NSString *phoneNumber;
-
-
-@property (copy,nonatomic)NSString * mobile;
-@property (copy,nonatomic)NSString * apiType;
-@property (copy,nonatomic)NSString * isForeign;
-@property (copy,nonatomic)NSString * countryAreaCode;
 
 @end
 
@@ -167,15 +157,6 @@
 @property (copy,nonatomic)NSString<Optional> *isEmail;
 
 @property (copy,nonatomic)NSString<Optional> *firstCharactor; //名称首字母,用于排序
-
-@end
-
-/*
- 成员列表请求 模型
- */
-@interface HJMemberHttpModel : HJBaseObject
-
-@property (copy,nonatomic)NSString<Optional> * userId;
 
 @end
 

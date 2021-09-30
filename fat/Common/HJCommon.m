@@ -55,15 +55,10 @@ NSString *const KK_URL_api_fat_member_modify = @"/api/fat/member_modify";
  */
 
 
-NSString *const KK_URL_query_member_by_userid = @"query_member_by_userid";
 NSString *const KK_URL_add_suggest = @"add_suggest";
 NSString *const KK_URL_sts = @"sts";
 NSString *const KK_URL_query_fat_record = @"query_fat_record";
 
-
-NSString *const KK_URL_user_change_phone = @"user_change_phone";
-NSString *const KK_URL_unbound_user = @"unbound_user";
-NSString *const KK_URL_bound_user = @"bound_user";
 NSString *const KK_URL_add_fat_record = @"add_fat_record";
 NSString *const KK_URL_del_fat_record = @"del_fat_record";
 NSString *const KK_URL_query_fat_record_by_recently = @"query_fat_record_by_recently";

@@ -16,27 +16,7 @@
     
     NSString * message = model.errormessage;
     
-     if([url isEqualToString:KK_URL_unbound_user]){
-        
-        /*
-         解绑邮箱
-         */
-        if (model.errorcode == 0) {
-            
-            message = KKLanguage(@"lab_tips_http_text14");
-            
-        }else if (model.errorcode == -1){
-            
-            message = KKLanguage(@"lab_tips_http_text3");
-            
-        }else if (model.errorcode == -3){
-            
-            message = KKLanguage(@"lab_tips_http_text16");
-            
-        }
-        
-        
-    }
+    
     
     return message;
 }

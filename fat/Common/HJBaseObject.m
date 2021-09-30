@@ -36,9 +36,6 @@
 
 @end
 
-@implementation HJMemberHttpModel
-@end
-
 @implementation HJFatRecordHttpModel
 @end
 

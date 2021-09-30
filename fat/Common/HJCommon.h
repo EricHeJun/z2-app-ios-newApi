@@ -30,6 +30,8 @@ extern NSString *const SECRET_KEY;
 /*
  新API
  */
+
+#pragma mark ============== 用户接口 ===============
 extern NSString *const KK_URL_api_user_login;  //登陆
 extern NSString *const KK_URL_api_user_logout;  //退出
 extern NSString *const KK_URL_api_user_info;    //获取用户信息
@@ -39,15 +41,16 @@ extern NSString *const KK_URL_api_user_register; //注册
 extern NSString *const KK_URL_api_user_modify_pwd;     //手机找回密码
 extern NSString *const KK_URL_api_user_email_find_pwd; //邮箱找回密码
 extern NSString *const KK_URL_api_user_reset_pwd; 
-
 extern NSString *const KK_URL_api_user_modify_phone;  //修改手机号
 extern NSString *const KK_URL_api_user_set_email;     //绑定邮箱
 extern NSString *const KK_URL_api_user_unband_email;  //邮箱解绑
-
+#pragma mark ============== 成员接口 ===============
 extern NSString *const KK_URL_api_fat_member_list;     //查询成员列表
 extern NSString *const KK_URL_api_fat_member_del;       //删除成员
 extern NSString *const KK_URL_api_fat_member_submit;    //添加成员
 extern NSString *const KK_URL_api_fat_member_modify;    //修改信息
+
+
 /*
  旧
  */
@@ -56,8 +59,6 @@ extern NSString *const KK_URL_add_suggest;                //意见反馈
 
 extern NSString *const KK_URL_sts;                        //获取sts授权
 extern NSString *const KK_URL_query_fat_record;           //查询历史记录
-
-extern NSString *const KK_URL_unbound_user;               //解绑
 
 extern NSString *const KK_URL_add_fat_record;             //上报测试记录
 extern NSString *const KK_URL_del_fat_record;             //删除测试记录
