@@ -159,7 +159,7 @@
             
         }else{
             
-            [self showToastInView:self.view time:KKToastTime title:model.errormessage];
+            [self showToastInView:self.view time:KKToastTime title:model.msg];
         }
         
         NSArray * arrAll =  [arrNet arrayByAddingObjectsFromArray:self.localHistoryArr] ;
@@ -531,7 +531,7 @@
             
         }else{
             
-            [self showToastInView:self.view time:KKToastTime title:model.errormessage];
+            [self showToastInView:self.view time:KKToastTime title:model.msg];
         }
     
     } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
@@ -576,7 +576,7 @@
             
         }else{
             
-            [sw showToastInView:self.view time:KKToastTime title:httpmodel.errormessage];
+            [sw showToastInView:self.view time:KKToastTime title:httpmodel.msg];
             
         }
         

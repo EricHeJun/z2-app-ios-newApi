@@ -456,7 +456,7 @@
             
         }else{
             
-            [sw showToastInView:sw.view time:KKToastTime title:httpmodel.errormessage];
+            [sw showToastInView:sw.view time:KKToastTime title:httpmodel.msg];
             
             /*
              图片存本地

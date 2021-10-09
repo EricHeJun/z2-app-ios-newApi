@@ -12,13 +12,7 @@
 
 + (NSString*)resultTips:(HJHTTPModel*)model type:(NSInteger)type{
     
-    NSString * url = model.commandCode;
-    
-    NSString * message = model.errormessage;
-    
-    
-    
-    return message;
+    return @"";
 }
 
 @end

@@ -224,7 +224,7 @@
             
         }else{
             
-            [sw showToastInView:sw.view time:KKToastTime title:model.errormessage];
+            [sw showToastInView:sw.view time:KKToastTime title:model.msg];
         }
         
     } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
@@ -268,7 +268,7 @@
             
         }else{
             
-            [sw showToastInView:sw.view time:KKToastTime title:model.errormessage];
+            [sw showToastInView:sw.view time:KKToastTime title:model.msg];
         }
         
     } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {

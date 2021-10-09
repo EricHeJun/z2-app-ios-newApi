@@ -27,8 +27,7 @@
  */
 @property (assign,nonatomic)int  errorcode;
 @property (strong,nonatomic)NSDictionary * data;
-@property (copy,nonatomic)NSString * errormessage;
-@property (copy,nonatomic)NSString * commandCode;
+
 
 
 @end

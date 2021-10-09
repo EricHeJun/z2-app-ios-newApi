@@ -592,7 +592,7 @@
             
         }else{
             
-            [self showToastInView:self.view time:KKToastTime title:model.errormessage];
+            [self showToastInView:self.view time:KKToastTime title:model.msg];
         }
         
         
@@ -656,7 +656,7 @@
             [self initChartData];
             
         }else{
-            [self showToastInView:self.view time:KKToastTime title:model.errormessage];
+            [self showToastInView:self.view time:KKToastTime title:model.msg];
         }
         
     } withError:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
