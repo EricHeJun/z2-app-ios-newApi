@@ -25,10 +25,8 @@
     
     requesrUrl = [NSString stringWithFormat:@"%@%@",requesrUrl,url];
     
-
     NSString * Language = [[[[HJCommon shareInstance] getCurrectLocalLanguage] componentsSeparatedByString:@"-"] firstObject];
   
-    
     //json 作为请求体
     
     NSMutableURLRequest * request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:requesrUrl parameters:nil error:nil];
@@ -36,7 +34,6 @@
     
     //请求头类型
     [request setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    
     [request setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Accept"];
     
     [request setValue:[[HJCommon shareInstance] getAppBundleID]  forHTTPHeaderField:@"App-Id"];

@@ -29,44 +29,34 @@
     
     self = [super initWithFederationTokenGetter:^OSSFederationToken * {
         
-        //把原来的 NSURLRequest 改成 NSMutableURLRequest, 这样可以加入新的请求头参数, 就加入这么点东西,其余的代码不改.
-        NSMutableURLRequest * request;
-        
-        NSString * access_token = [[NSUserDefaults standardUserDefaults] objectForKey:KKAccount_Token];
+        NSString * Authorization = [[NSUserDefaults standardUserDefaults] objectForKey:KKAccount_Token];
         
         NSString * timestamp = [[HJCommon shareInstance] getTimestamp];
         
-        NSString * requesrUrl = authServerUrl;
+        NSString * requesrUrl = [[HJCommon shareInstance] isDebug]?HOST_URl_TEST:HOST_URl;
         
-        NSString * jsonStr = [[HJCommon shareInstance] dictionaryToJson:@{@"name":@"sts"}];
+        requesrUrl = [NSString stringWithFormat:@"%@%@",requesrUrl,KK_URL_api_system_api_sts_server];
         
-        NSString * AES = [HJAESUtil aesEncrypt:jsonStr];
+        NSString * Language = [[[[HJCommon shareInstance] getCurrectLocalLanguage] componentsSeparatedByString:@"-"] firstObject];
+      
+        //json 作为请求体
         
-        NSString * token = [[HJCommon shareInstance] md5To32bit:[NSString stringWithFormat:@"%@%@%@%@",timestamp,KK_URL_sts,AES,SECRET_KEY]];
+        NSMutableURLRequest * request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:requesrUrl parameters:nil error:nil];
+
         
-        NSMutableDictionary * requestdic =  [NSMutableDictionary dictionary];
+        //请求头类型
+        [request setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
+        [request setValue:@"application/json;charset=UTF-8" forHTTPHeaderField:@"Accept"];
         
-        [requestdic setObject:KK_URL_sts forKey:@"commandCode"];
-        [requestdic setObject:AES forKey:@"data"];
+        [request setValue:[[HJCommon shareInstance] getAppBundleID]  forHTTPHeaderField:@"App-Id"];
+        [request setValue:Language forHTTPHeaderField:@"Language"];
+        [request setValue:@"1.0" forHTTPHeaderField:@"Version"];
+        [request setValue:timestamp forHTTPHeaderField:@"Ts"];
+        [request setValue:@"1" forHTTPHeaderField:@"Sign"];
+        [request setValue:Authorization==nil?@"":Authorization forHTTPHeaderField:@"Authorization"];
         
-        [requestdic setObject:timestamp forKey:@"timeStamp"];
-        [requestdic setObject:token forKey:@"token"];
-        
-        [requestdic setObject:[[HJCommon shareInstance] getCurrectLocalCountry] forKey:@"langType"];
-        [requestdic setObject:[[HJCommon shareInstance] getCurrectLocalLanguage] forKey:@"language"];
-        
-        [requestdic setObject:[[HJCommon shareInstance] getAppBundleID] forKey:@"application_ID"];
-        [requestdic setObject:@"1.0" forKey:@"server_version"];
-        
-        [requestdic setObject:access_token==nil?@"":access_token forKey:@"access_token"];
-        
-        
-        request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:requesrUrl parameters:requestdic error:nil];
-        
-        
-        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-        [request setValue:@"application/json,text/plain" forHTTPHeaderField:@"Accept"];
-        
+        [request setTimeoutInterval:12];
+    
         
         OSSTaskCompletionSource * tcs = [OSSTaskCompletionSource taskCompletionSource];
         NSURLSession * session = [NSURLSession sharedSession];
@@ -132,7 +122,9 @@ static HJOSSUpload *_uploader;
             //[OSSLog enableLog];
             
             _uploader = [[HJOSSUpload alloc] init];
-            NSString *OSS_STSTOKEN_URL =[[HJCommon shareInstance] isDebug]?STS_URl_TEST:STS_URl;
+            
+            NSString *OSS_STSTOKEN_URL =[[HJCommon shareInstance] isDebug]?HOST_URl_TEST:HOST_URl;
+            
             id<OSSCredentialProvider> credentialProvider = [[ISAuthCredentialProvider alloc] initWithAuthServerUrl:OSS_STSTOKEN_URL];
             
             OSSClientConfiguration *cfg = [[OSSClientConfiguration alloc] init];

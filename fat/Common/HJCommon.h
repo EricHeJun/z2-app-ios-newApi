@@ -15,15 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** URL、地址 **/
 extern NSString *const HOST_URl;
-extern NSString *const STS_URl;
 
 extern NSString *const HOST_URl_TEST;
-extern NSString *const STS_URl_TEST;
-
-/// 请求共钥 / 密钥
-extern NSString *const accessKeyId;       //ios
-extern NSString *const accessSecret;      //dn37uKRDp8YlOxX86pN9lKYXA2HJcibB
-extern NSString *const SECRET_KEY;
 
 
 //请求 url
@@ -49,7 +42,7 @@ extern NSString *const KK_URL_api_fat_member_list;     //查询成员列表
 extern NSString *const KK_URL_api_fat_member_del;       //删除成员
 extern NSString *const KK_URL_api_fat_member_submit;    //添加成员
 extern NSString *const KK_URL_api_fat_member_modify;    //修改信息
-
+extern NSString *const KK_URL_api_system_api_sts_server;  //获取sts授权
 
 /*
  旧
@@ -57,7 +50,7 @@ extern NSString *const KK_URL_api_fat_member_modify;    //修改信息
 
 extern NSString *const KK_URL_add_suggest;                //意见反馈
 
-extern NSString *const KK_URL_sts;                        //获取sts授权
+
 extern NSString *const KK_URL_query_fat_record;           //查询历史记录
 
 extern NSString *const KK_URL_add_fat_record;             //上报测试记录

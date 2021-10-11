@@ -13,18 +13,11 @@
 
 /// 外网正式
 NSString *const HOST_URl = @"http://admin.marvoto.com";
-NSString *const STS_URl  = @"http://api.marvoto.com/MarvotoCloudService/mobile/sts_server";
 
 
 /// 内网测试 - DEBUG
 NSString *const HOST_URl_TEST = @"http://192.168.10.198/MarvotoCloudService/mobile/service";
-NSString *const STS_URl_TEST = @"http://192.168.10.198/MarvotoCloudService/mobile/sts_server";
 
-/// 请求共钥 / 密钥
-NSString *const accessKeyId = @"ios";      
-NSString *const accessSecret = @"2ojUCHz5xkA4TPmmdB8As49WJsZoga6M";
-
-NSString *const SECRET_KEY = @"Mt2JtH7rP4h-2018";
 
 /*
  新API
@@ -48,7 +41,7 @@ NSString *const KK_URL_api_fat_member_list = @"/api/fat/member_list";
 NSString *const KK_URL_api_fat_member_del = @"/api/fat/member_del";    
 NSString *const KK_URL_api_fat_member_submit = @"/api/fat/member_submit";
 NSString *const KK_URL_api_fat_member_modify = @"/api/fat/member_modify";
-
+NSString *const KK_URL_api_system_api_sts_server = @"/api/system/api_sts_server";
 
 /*
  旧API
@@ -56,7 +49,7 @@ NSString *const KK_URL_api_fat_member_modify = @"/api/fat/member_modify";
 
 
 NSString *const KK_URL_add_suggest = @"add_suggest";
-NSString *const KK_URL_sts = @"sts";
+
 NSString *const KK_URL_query_fat_record = @"query_fat_record";
 
 NSString *const KK_URL_add_fat_record = @"add_fat_record";

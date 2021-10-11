@@ -308,7 +308,7 @@
     
     [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_query_adview withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
-        if (model.errorcode == KKStatus_success) {
+        if (model.code == KKStatus_success) {
 
             //解析数据,存储数据库
             NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
