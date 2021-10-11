@@ -565,7 +565,6 @@
     
     model.userId = [HJCommon shareInstance].userInfoModel.userId;
     
-    
     model.bodyPosition = [NSString stringWithFormat:@"%ld",(long)self.selPositionModel.positionValue];
     
     NSString * familiId = [HJCommon shareInstance].selectModel.id;
@@ -578,11 +577,11 @@
 
     NSDictionary * dic =[model toDictionary];
     
-    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_query_fat_record_by_recently withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_fat_recent withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
         [self hideLoading];
         
-        if (model.errorcode == KKStatus_success) {
+        if (model.code == KKStatus_success) {
             //解析数据,存储数据库
             NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
             //DLog(@"jsonStr:%@",jsonStr);
@@ -630,17 +629,21 @@
     
     NSDictionary * dic =[model toDictionary];
     
-    NSString * url = KK_URL_query_fat_record_by_date;
+    NSString * url;
     
     if (self.selTimeBtn.tag == KKButton_year) {
-        url = KK_URL_query_fat_record_by_month_avg;
+        url = KK_URL_api_fat_month_avg;
+    }else if(self.selTimeBtn.tag == KKButton_month){
+        url = KK_URL_api_fat_week_avg;
+    }else if (self.selTimeBtn.tag == KKButton_week){
+        url = KK_URL_api_fat_day_avg;
     }
     
     [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:url withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
         [self hideLoading];
         
-        if (model.errorcode == KKStatus_success) {
+        if (model.code == KKStatus_success) {
             
             [self.pointFatArr removeAllObjects];
             [self.pointMuscleArr removeAllObjects];

@@ -44,6 +44,10 @@ extern NSString *const KK_URL_api_fat_member_submit;    //添加成员
 extern NSString *const KK_URL_api_fat_member_modify;    //修改信息
 extern NSString *const KK_URL_api_system_api_sts_server;  //获取sts授权
 
+extern NSString *const KK_URL_api_fat_recent;    //查询最近一条数据
+extern NSString *const KK_URL_api_fat_month_avg; //查询某一时间段的每月平均测量值
+extern NSString *const KK_URL_api_fat_week_avg;
+extern NSString *const KK_URL_api_fat_day_avg;
 /*
  旧
  */
@@ -55,11 +59,11 @@ extern NSString *const KK_URL_query_fat_record;           //查询历史记录
 
 extern NSString *const KK_URL_add_fat_record;             //上报测试记录
 extern NSString *const KK_URL_del_fat_record;             //删除测试记录
-extern NSString *const KK_URL_query_fat_record_by_recently; //查询最近一条数据
+
 extern NSString *const KK_URL_query_fat_record_by_date;
 extern NSString *const KK_URL_get_firmwareinfo;
 extern NSString *const KK_URL_query_adview;               //查询广告参数  
-extern NSString *const KK_URL_query_fat_record_by_month_avg; //查询某一时间段的每月平均测量值
+
 
 /** 全局 字符定义 **/
 extern NSString *const KKAccount_Debug;

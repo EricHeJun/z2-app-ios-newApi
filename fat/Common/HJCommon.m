@@ -43,6 +43,11 @@ NSString *const KK_URL_api_fat_member_submit = @"/api/fat/member_submit";
 NSString *const KK_URL_api_fat_member_modify = @"/api/fat/member_modify";
 NSString *const KK_URL_api_system_api_sts_server = @"/api/system/api_sts_server";
 
+NSString *const KK_URL_api_fat_recent = @"/api/fat/recent";
+NSString *const KK_URL_api_fat_month_avg = @"/api/fat/month_avg";
+NSString *const KK_URL_api_fat_week_avg = @"/api/fat/week_avg";
+NSString *const KK_URL_api_fat_day_avg = @"/api/fat/day_avg";
+
 /*
  旧API
  */
@@ -54,11 +59,11 @@ NSString *const KK_URL_query_fat_record = @"query_fat_record";
 
 NSString *const KK_URL_add_fat_record = @"add_fat_record";
 NSString *const KK_URL_del_fat_record = @"del_fat_record";
-NSString *const KK_URL_query_fat_record_by_recently = @"query_fat_record_by_recently";
+
 NSString *const KK_URL_query_fat_record_by_date = @"query_fat_record_by_date";
 NSString *const KK_URL_get_firmwareinfo = @"get_firmwareinfo";
 NSString *const KK_URL_query_adview = @"query_adview";
-NSString *const KK_URL_query_fat_record_by_month_avg = @"query_fat_record_by_month_avg";
+
 
 /** 全局字符定义 **/
 NSString *const KKAccount_Debug = @"KKAccount_Debug";
