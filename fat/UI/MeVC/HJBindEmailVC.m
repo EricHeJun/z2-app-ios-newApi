@@ -36,27 +36,18 @@
     
     self.view.backgroundColor = kkBgGrayColor;
     
-    
-    if ([[HJCommon shareInstance].userInfoModel.isEmail boolValue] == YES) {
+    if ([HJCommon shareInstance].userInfoModel.email.length>0) {
         
-        [self.view addSubview:self.UNbindView];
+        [self addRightBtnOneWithString:KKLanguage(@"lab_me_userInfo_text7")];
+        
+        [self.view addSubview:self.verifyView];
         
     }else{
         
-    
-        if ([HJCommon shareInstance].userInfoModel.email != nil &&
-            [HJCommon shareInstance].userInfoModel.email.length != 0) {
-            
-            [self addRightBtnOneWithString:KKLanguage(@"lab_me_userInfo_text7")];
-            
-            [self.view addSubview:self.verifyView];
-            
-        }else{
-            
-            [self addRightBtnOneWithString:KKLanguage(@"lab_me_userInfo_save")];
-            
-            [self.view addSubview:self.bindView];
-        }
+        
+        [self addRightBtnOneWithString:KKLanguage(@"lab_me_userInfo_save")];
+        
+        [self.view addSubview:self.bindView];
     
     }
 
@@ -162,36 +153,36 @@
         [view addSubview:emailLab];
         _emailLab = emailLab;
         
-        
-        UILabel * verLab = [[UILabel alloc] init];
-        verLab.frame = CGRectMake(0, emailLab.frame.size.height+emailLab.frame.origin.y, KKSceneWidth, KKButtonHeight/2);
-        verLab.font = kk_sizefont(KKFont_small_large);
-        verLab.text = KKLanguage(@"lab_me_userInfo_text8");
-        verLab.textAlignment = NSTextAlignmentCenter;
-        verLab.textColor = kkTextGrayColor;
-        [view addSubview:verLab];
-
-        
-        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(kk_x(40), verLab.frame.origin.y + verLab.frame.size.height + kk_y(20), KKSceneWidth- 2*kk_x(40), KKButtonHeight);
-        [btn setTitle:KKLanguage(@"lab_me_userInfo_text9") forState:UIControlStateNormal];
-        [btn setTitleColor:kkWhiteColor forState:UIControlStateNormal];
-        btn.titleLabel.font = kk_sizefont(KKFont_Normal);
-        btn.layer.backgroundColor = KKBgYellowColor.CGColor;
-        btn.tag = KKButton_Account_Register_email;
-        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [view addSubview:btn];
-        
-        
-        UIButton * lastbtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        lastbtn.frame = CGRectMake(kk_x(40), btn.frame.origin.y + btn.frame.size.height, KKSceneWidth- 2*kk_x(40), KKButtonHeight);
-        [lastbtn setTitle:KKLanguage(@"lab_me_userInfo_text10") forState:UIControlStateNormal];
-        [lastbtn setTitleColor:KKBgYellowColor forState:UIControlStateNormal];
-        lastbtn.titleLabel.font = kk_sizefont(KKFont_Normal);
-        lastbtn.backgroundColor =[UIColor clearColor];
-        [view addSubview:lastbtn];
-        lastbtn.tag = KKButton_upgrade;
-        [lastbtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+//
+//        UILabel * verLab = [[UILabel alloc] init];
+//        verLab.frame = CGRectMake(0, emailLab.frame.size.height+emailLab.frame.origin.y, KKSceneWidth, KKButtonHeight/2);
+//        verLab.font = kk_sizefont(KKFont_small_large);
+//        verLab.text = KKLanguage(@"lab_me_userInfo_text8");
+//        verLab.textAlignment = NSTextAlignmentCenter;
+//        verLab.textColor = kkTextGrayColor;
+//        [view addSubview:verLab];
+//
+//
+//        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        btn.frame = CGRectMake(kk_x(40), verLab.frame.origin.y + verLab.frame.size.height + kk_y(20), KKSceneWidth- 2*kk_x(40), KKButtonHeight);
+//        [btn setTitle:KKLanguage(@"lab_me_userInfo_text9") forState:UIControlStateNormal];
+//        [btn setTitleColor:kkWhiteColor forState:UIControlStateNormal];
+//        btn.titleLabel.font = kk_sizefont(KKFont_Normal);
+//        btn.layer.backgroundColor = KKBgYellowColor.CGColor;
+//        btn.tag = KKButton_Account_Register_email;
+//        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [view addSubview:btn];
+//
+//
+//        UIButton * lastbtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        lastbtn.frame = CGRectMake(kk_x(40), btn.frame.origin.y + btn.frame.size.height, KKSceneWidth- 2*kk_x(40), KKButtonHeight);
+//        [lastbtn setTitle:KKLanguage(@"lab_me_userInfo_text10") forState:UIControlStateNormal];
+//        [lastbtn setTitleColor:KKBgYellowColor forState:UIControlStateNormal];
+//        lastbtn.titleLabel.font = kk_sizefont(KKFont_Normal);
+//        lastbtn.backgroundColor =[UIColor clearColor];
+//        [view addSubview:lastbtn];
+//        lastbtn.tag = KKButton_upgrade;
+//        [lastbtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
    
     }
     
