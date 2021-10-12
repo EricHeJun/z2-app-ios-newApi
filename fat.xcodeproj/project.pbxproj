@@ -72,6 +72,7 @@
 		74726517263297E50033F759 /* HJMainVC+AccountList.m in Sources */ = {isa = PBXBuildFile; fileRef = 74726514263297E50033F759 /* HJMainVC+AccountList.m */; };
 		7472651C2632ABC40033F759 /* HJAESUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7472651B2632ABC40033F759 /* HJAESUtil.m */; };
 		7472651D2632ABC40033F759 /* HJAESUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 7472651B2632ABC40033F759 /* HJAESUtil.m */; };
+		74782CA62715B99500145C95 /* img_main_arm_muscle_sel.gif in Resources */ = {isa = PBXBuildFile; fileRef = 74782CA52715B99500145C95 /* img_main_arm_muscle_sel.gif */; };
 		748A96372654ABA80062C73D /* HJChartLeftAxisFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 748A96362654ABA80062C73D /* HJChartLeftAxisFormatter.m */; };
 		748FAE6126451EF5002DEAEE /* HJHistoryChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 748FAE6026451EF5002DEAEE /* HJHistoryChatVC.m */; };
 		7491802F2652380600044416 /* HJRecenetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7491802E2652380600044416 /* HJRecenetView.m */; };
@@ -254,6 +255,7 @@
 		74726515263297E50033F759 /* HJMainVC+AccountList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HJMainVC+AccountList.h"; sourceTree = "<group>"; };
 		7472651A2632ABC40033F759 /* HJAESUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJAESUtil.h; sourceTree = "<group>"; };
 		7472651B2632ABC40033F759 /* HJAESUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJAESUtil.m; sourceTree = "<group>"; };
+		74782CA52715B99500145C95 /* img_main_arm_muscle_sel.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = img_main_arm_muscle_sel.gif; sourceTree = "<group>"; };
 		748A96352654ABA80062C73D /* HJChartLeftAxisFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJChartLeftAxisFormatter.h; sourceTree = "<group>"; };
 		748A96362654ABA80062C73D /* HJChartLeftAxisFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJChartLeftAxisFormatter.m; sourceTree = "<group>"; };
 		748FAE5F26451EF5002DEAEE /* HJHistoryChatVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJHistoryChatVC.h; sourceTree = "<group>"; };
@@ -759,6 +761,7 @@
 		7910296126268BA200DBAAE2 /* Support files */ = {
 			isa = PBXGroup;
 			children = (
+				74782CA52715B99500145C95 /* img_main_arm_muscle_sel.gif */,
 				74B02DB5266B1337002B4C9B /* City.plist */,
 				74237815266A11CC007970DF /* img_main_connect.gif */,
 				74333A16264A498A004A88B3 /* privacyFile */,
@@ -934,6 +937,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74782CA62715B99500145C95 /* img_main_arm_muscle_sel.gif in Resources */,
 				7459611E264CB8AE00C5AF7F /* img_main_calf_sel.gif in Resources */,
 				74FC3114265B33FD00CD4CFB /* InfoPlist.strings in Resources */,
 				74237816266A11CD007970DF /* img_main_connect.gif in Resources */,
