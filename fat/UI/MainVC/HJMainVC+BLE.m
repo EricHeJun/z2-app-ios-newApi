@@ -252,35 +252,46 @@
         [[HJBLEManage sharedCentral] getDevice_VERSION_CTRL:^(NSInteger KKBLEActionStatus, BOOL isSucceeded, id  _Nullable response, NSError * _Nullable error) {
             
             NSLog(@"版本时间信息:%@",response);
-        
-            Byte * vaildByte=(Byte*)[response bytes];
             
-            
-            /*
-             超声固件版本号
-             */
-            float firmware = (vaildByte[10] & 0xff)/10.;
-            
-            int year_high = vaildByte[12] & 0xff;
-            int year_low =  vaildByte[13] & 0xff;
+            NSData * valueData = (NSData*)response;
             
             /*
-             年
+             数据长度过滤,去掉异常数据
              */
-            int year = year_high * 256 + year_low;
-            /*
-             月
-             */
-            int month = vaildByte[14] & 0xff;
-            /*
-             日
-             */
-            int day = vaildByte[15] & 0xff;
-            
-            [HJCommon shareInstance].BLEInfoModel.FirewareVersion = [NSString stringWithFormat:@"%.1f",firmware];
-            
-            [HJCommon shareInstance].BLEInfoModel.creatDate = [NSString stringWithFormat:@"%d/%d/%d",year,month,day];
-            
+            if (valueData.length>16) {
+                
+                
+                Byte * vaildByte=(Byte*)[response bytes];
+                
+                /*
+                 超声固件版本号
+                 */
+                float firmware = (vaildByte[10] & 0xff)/10.;
+                
+                int year_high = vaildByte[12] & 0xff;
+                int year_low =  vaildByte[13] & 0xff;
+                
+                /*
+                 年
+                 */
+                int year = year_high * 256 + year_low;
+                /*
+                 月
+                 */
+                int month = vaildByte[14] & 0xff;
+                /*
+                 日
+                 */
+                int day = vaildByte[15] & 0xff;
+                
+                [HJCommon shareInstance].BLEInfoModel.FirewareVersion = [NSString stringWithFormat:@"%.1f",firmware];
+                
+                [HJCommon shareInstance].BLEInfoModel.creatDate = [NSString stringWithFormat:@"%d/%d/%d",year,month,day];
+                
+            }else{
+                
+                [self showToastInWindows:KKToastTime title:[NSString stringWithFormat:@"%@",response]];
+            }
             
             /*
              设置深度
