@@ -46,20 +46,11 @@
     
     [self initUI];
     
-    if ([HJCommon shareInstance].isTest) {
-        
-        [self getBLEDataTwo];
-        self.changeBtn.selected = YES;
-        
-    }else{
-         
-        [self getBLEData];
-        self.changeBtn.selected = NO;
-    }
+    [self getBLEDataTwo];
+       
     
     [self refreshUI];
     
-
     /*
      添加肌肉覆盖视图
      */
@@ -236,11 +227,6 @@
     btn.adjustsImageWhenHighlighted = NO;
     [self.view addSubview:btn];
     
-    /*
-     测试功能
-     */
-    [self.view addSubview:self.changeBtn];
-    
     
     HJPositionModel * model = [[HJCommon shareInstance] currectPositionToString];
     [btn setImage:[UIImage imageNamed:model.circleImageNor_s] forState:UIControlStateNormal];
@@ -357,24 +343,6 @@
     return _chatView;
 }
 
-- (UIButton *)changeBtn{
-    
-    if (!_changeBtn) {
-        
-        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(KKSceneWidth/2 - kk_x(300)/2, KKNavBarHeight, kk_x(300), KKButtonHeight/2);
-        [btn setTitle:KKLanguage(@"当前为非补点方案") forState:UIControlStateSelected];
-        [btn setTitle:KKLanguage(@"当前为补点方案") forState:UIControlStateNormal];
-        [btn setTitleColor:kkTextBlackColor forState:UIControlStateNormal];
-        btn.titleLabel.font = kk_sizefont(KKFont_small_large);
-        btn.backgroundColor = KKBgYellowColor;
-        [btn addTarget:self action:@selector(changeBtn:) forControlEvents:UIControlEventTouchUpInside];
-        _changeBtn = btn;
-
-    }
-    
-    return _changeBtn;
-}
 - (HJMuscleGuideView *)guideView{
     
     if (!_guideView) {
@@ -682,17 +650,6 @@
         
     }
 
-}
-- (void)changeBtn:(UIButton*)sender{
-    
-    sender.selected  = !sender.selected;
-
-    [HJCommon shareInstance].isTest = sender.selected;
-    
-    [self dismissViewControllerAnimated:NO completion:^{
-            
-    }];
-    
 }
 
 -(void)panGestureRecognizer:(UIPanGestureRecognizer *)recognizer{

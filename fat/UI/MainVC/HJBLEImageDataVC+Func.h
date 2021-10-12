@@ -18,11 +18,6 @@
 - (void)getBLEDataTwo;
 
 /*
- 获取蓝牙数据-补点
- */
-- (void)getBLEData;
-
-/*
  检测图像是否满足成像条件
  */
 - (void)detectionImage;

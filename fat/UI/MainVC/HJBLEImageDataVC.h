@@ -65,8 +65,6 @@
 
 @property (assign,nonatomic)NSInteger endCount;      //未收到的数据笔数统计
 
-@property (strong,nonatomic)UIButton * changeBtn;   //切换功能- 测试
-
 @property (strong,nonatomic)HJMuscleGuideView * guideView;
 
 @property (strong,nonatomic)HJBaseView * muscleView;
