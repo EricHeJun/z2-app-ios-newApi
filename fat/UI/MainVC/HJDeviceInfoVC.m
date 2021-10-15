@@ -200,23 +200,17 @@
     [self showLoadingInView:self.view time:KKTimeOut title:KKLanguage(@"lab_common_loading")];
     
     HJFirmwareHttpModel * model = [HJFirmwareHttpModel new];
+    
     model.firmwareMode = [modeNameArr firstObject];
     model.firmwareName = [modeNameArr lastObject];
     
     NSDictionary * dic = [model toDictionary];
-    
-    
-    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_get_firmwareinfo withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_firmware_info withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
-        [sw hideLoading];
-        
-        if (model.errorcode == KKStatus_success) {
+        if (model.code == KKStatus_success) {
             
-            //解析数据,存储数据库
-            NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
-            DLog(@"jsonStr:%@",jsonStr);
-            
-            sw.firmwareInfoModel = [[HJFirmwareInfoModel alloc] initWithString:jsonStr error:nil];
+            sw.firmwareInfoModel = [[HJFirmwareInfoModel alloc] initWithDictionary:model.data error:nil];
             
             [self fileDownload:sw.firmwareInfoModel];
             
@@ -245,22 +239,17 @@
     
     HJFirmwareHttpModel * model = [HJFirmwareHttpModel new];
     model.firmwareMode = [modeNameArr firstObject];
-    model.firmwareName =[NSString stringWithFormat:@"%@-ble",[modeNameArr lastObject]];;
+    model.firmwareName = [NSString stringWithFormat:@"%@-ble",[modeNameArr lastObject]];;
     
     NSDictionary * dic = [model toDictionary];
     
-    
-    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_get_firmwareinfo withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_firmware_info withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
         [sw hideLoading];
         
-        if (model.errorcode == KKStatus_success) {
+        if (model.code == KKStatus_success) {
             
-            //解析数据,存储数据库
-            NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
-            DLog(@"jsonStr:%@",jsonStr);
-            
-            sw.BLEfirmwareInfoModel = [[HJFirmwareInfoModel alloc] initWithString:jsonStr error:nil];
+            sw.BLEfirmwareInfoModel = [[HJFirmwareInfoModel alloc] initWithDictionary:model.data error:nil];
             
             [self fileDownload:sw.BLEfirmwareInfoModel];
             
@@ -290,10 +279,9 @@
 #pragma mark ============== 文件下载 ===============
 - (void)fileDownload:(HJFirmwareInfoModel*)model{
     
-    
     SW(sw);
     
-    [KKHttpRequest fileDownUrl:model.url withSuccess:^(NSURL *filePath) {
+    [KKHttpRequest fileDownUrl:model.firmwarePath withSuccess:^(NSURL *filePath) {
         
         NSLog(@"filePath:%@",filePath);
         
