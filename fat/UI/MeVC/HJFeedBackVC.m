@@ -378,8 +378,15 @@
         [self uploadImage:^(BOOL result, NSArray<NSString *> * _Nonnull nameArray) {
             
             if (result == NO) {
-                [self showLoadingInView:self.view time:KKToastTime title:KKLanguage(@"tips_fail")];
-                return;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self showLoadingInView:self.view time:KKToastTime title:KKLanguage(@"tips_fail")];
+                 
+                    
+                });
+     
+                  return;
             }
             
             [self uploadSuggest:suggest contact:contact imgUrl:[nameArray firstObject]];
@@ -396,27 +403,22 @@
 - (void)uploadSuggest:(NSString*)suggest contact:(NSString*)contact imgUrl:(NSString*)imgUrl{
     
     HJFeedBackModel * model = [[HJFeedBackModel alloc] init];
-    
-    model.userId = [HJCommon shareInstance].userInfoModel.userId;
+
     model.imgUrl = imgUrl;
     model.content = suggest;
     model.contactWay = contact;
-    model.appInfo = [[HJCommon shareInstance] getAppVersion];
-    model.systemType = @"IOS";
+    model.phoneInfo = [[HJCommon shareInstance] getAppVersion];
+    model.systemType = @"iOS";
     
     NSDictionary * dic = [model toDictionary];
 
-    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_add_suggest withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
+    [KKHttpRequest HttpRequestType:k_POST withrequestType:NO withDataString:dic withUrl:KK_URL_api_suggest_submit withSuccess:^(id result, NSDictionary *resultDic, HJHTTPModel *model) {
         
-        if (model.errorcode == KKStatus_success ) {
-            
-            //解析数据,存储数据库
-            NSString * jsonStr = [HJAESUtil aesDecrypt:model.data];
-            DLog(@"jsonStr:%@",jsonStr);
+        if (model.code == KKStatus_success ) {
             
             [self.navigationController popViewControllerAnimated:YES];
             
-            [self showToastInWindows:KKToastTime title:KKLanguage(@"lab_feedback_confirm_success")];
+            [self showToastInWindows:KKToastTime title:model.msg];
             
         }else{
             
